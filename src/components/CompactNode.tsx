@@ -2,12 +2,16 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import type { TimelineEntry } from "@/data/timeline";
+import { generateFakeHash, toBranchName, getCategoryColor } from "@/lib/gitFormatting";
 
-const CompactNode = ({ entry, side }: { entry: TimelineEntry; side: "left" | "right" }) => {
+const CompactNode = ({ entry, side, isLatest }: { entry: TimelineEntry; side: "left" | "right"; isLatest?: boolean }) => {
   const [expanded, setExpanded] = useState(false);
+  const hash = generateFakeHash(entry.id);
+  const categoryColor = getCategoryColor(entry.category);
 
   return (
     <motion.div
+      id={`entry-${entry.id}`}
       initial={{ opacity: 0, x: side === "left" ? -20 : 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -22,7 +26,18 @@ const CompactNode = ({ entry, side }: { entry: TimelineEntry; side: "left" | "ri
           expanded ? "border-border bg-secondary/30" : ""
         }`}
       >
-        <h3 className="text-sm font-medium text-foreground">{entry.title}</h3>
+        {/* Git log --oneline format */}
+        <div className={`flex items-baseline gap-2 font-mono text-sm ${side === "left" ? "md:flex-row-reverse" : ""}`}>
+          <span style={{ color: categoryColor }} className="shrink-0 text-xs opacity-80">
+            {hash}
+          </span>
+          {(entry.branch || isLatest) && (
+            <span className="shrink-0 text-xs text-commit-branch">
+              ({isLatest ? "HEAD → main" : `feature/${toBranchName(entry.title)}`})
+            </span>
+          )}
+          <span className="font-medium text-foreground truncate">{entry.title}</span>
+        </div>
 
         <AnimatePresence>
           {expanded && (
@@ -42,7 +57,7 @@ const CompactNode = ({ entry, side }: { entry: TimelineEntry; side: "left" | "ri
                 {entry.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full bg-secondary px-2 py-0.5 text-xs text-muted-foreground"
+                    className="rounded-full bg-secondary px-2 py-0.5 font-mono text-xs text-muted-foreground"
                   >
                     {tech}
                   </span>

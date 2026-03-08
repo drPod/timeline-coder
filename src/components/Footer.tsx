@@ -8,7 +8,7 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border py-12">
+    <footer id="footer" className="border-t border-border py-12">
       <div className="flex items-center justify-center gap-6">
         {footerLinks.map(({ icon: Icon, href, label }) => (
           <a

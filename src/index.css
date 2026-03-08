@@ -13,7 +13,7 @@
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 217 92% 60%;
+    --primary: 142 70% 45%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 12%;
@@ -22,7 +22,7 @@
     --muted: 0 0% 12%;
     --muted-foreground: 0 0% 55%;
 
-    --accent: 217 92% 60%;
+    --accent: 142 70% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -30,23 +30,23 @@
 
     --border: 0 0% 14%;
     --input: 0 0% 14%;
-    --ring: 217 92% 60%;
+    --ring: 142 70% 45%;
 
     --radius: 0.75rem;
 
-    --commit-line: 217 92% 60%;
-    --commit-node: 217 92% 60%;
-    --commit-glow: 217 92% 60%;
+    --commit-line: 142 70% 45%;
+    --commit-node: 142 70% 45%;
+    --commit-glow: 142 70% 45%;
     --commit-branch: 160 84% 50%;
 
     --sidebar-background: 0 0% 6%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 217 92% 60%;
+    --sidebar-primary: 142 70% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 12%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 217 92% 60%;
+    --sidebar-ring: 142 70% 45%;
   }
 }
 
@@ -58,6 +58,94 @@
   body {
     @apply bg-background text-foreground antialiased;
   }
+}
+
+/* CRT easter egg mode */
+.crt-mode {
+  --foreground: 142 70% 75%;
+  --muted-foreground: 142 20% 50%;
+  --primary: 142 80% 50%;
+  --commit-node: 142 80% 50%;
+  --commit-glow: 142 80% 50%;
+  --border: 142 20% 15%;
+}
+
+.crt-mode * {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
+}
+
+/* Glitch effect — triggered by clicking name 5 times */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    filter: none;
+  }
+  10% {
+    transform: translate(-3px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    transform: translate(3px, -2px);
+    clip-path: inset(20% 0 40% 0);
+  }
+  30% {
+    transform: translate(-2px, 1px);
+    filter: hue-rotate(180deg);
+  }
+  40% {
+    transform: translate(2px, -1px);
+    clip-path: inset(60% 0 10% 0);
+  }
+  50% {
+    transform: translate(0);
+    filter: hue-rotate(270deg);
+    clip-path: none;
+  }
+  60% {
+    transform: translate(-2px, -1px);
+    clip-path: inset(10% 0 70% 0);
+  }
+  70% {
+    transform: translate(3px, 1px);
+    filter: hue-rotate(120deg);
+  }
+  80% {
+    transform: translate(-1px, 2px);
+    clip-path: inset(40% 0 20% 0);
+  }
+  90% {
+    transform: translate(1px, -2px);
+    filter: hue-rotate(60deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: none;
+    clip-path: none;
+  }
+}
+
+.glitch-effect {
+  animation: glitch 0.15s ease-in-out infinite;
+  text-shadow:
+    3px 0 #ff0000,
+    -3px 0 #00ffff;
+}
+
+/* Commit node push glow animation */
+@keyframes commit-push {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.commit-push-glow {
+  animation: commit-push 0.6s ease-out;
 }
 
 /* Custom scrollbar */

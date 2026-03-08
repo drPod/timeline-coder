@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, FileText, ChevronDown } from "lucide-react";
+import { useTypingAnimation } from "@/hooks/useTypingAnimation";
+import { useGlitchName } from "@/hooks/useGlitchName";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com", label: "GitHub" },
@@ -8,8 +10,11 @@ const socialLinks = [
 ];
 
 const Hero = () => {
+  const { text, cursor } = useTypingAnimation();
+  const { isGlitching, handleClick } = useGlitchName();
+
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-6">
+    <section id="hero" className="relative flex min-h-screen flex-col items-center justify-center px-6">
       {/* Subtle grid background */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
@@ -20,18 +25,53 @@ const Hero = () => {
         }}
       />
 
+      {/* Subtle scanline overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(142 70% 45% / 0.15) 2px, hsl(142 70% 45% / 0.15) 4px)",
+        }}
+      />
+
+      {/* CRT vignette */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,hsl(0_0%_0%/0.4))]" />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="relative z-10 text-center"
       >
-        <h1 className="mb-4 text-5xl font-bold tracking-tight text-foreground sm:text-7xl">
-          Your Name
-        </h1>
-        <p className="mx-auto max-w-lg text-lg text-muted-foreground sm:text-xl">
-          Math + CS @ UIUC · Building things since 2018
-        </p>
+        {/* PGP-style name block */}
+        <div
+          onClick={handleClick}
+          className={`mx-auto mb-6 cursor-default select-none ${isGlitching ? "glitch-effect" : ""}`}
+        >
+          <pre className="font-mono text-[10px] leading-tight text-primary/40 sm:text-xs">
+            {"-----BEGIN PGP SIGNATURE-----"}
+          </pre>
+          <h1 className="my-2 font-mono text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
+            Darsh Poddar
+          </h1>
+          <pre className="font-mono text-[10px] leading-tight text-muted-foreground sm:text-xs">
+            {"Math + CS @ UIUC"}
+          </pre>
+          <pre className="font-mono text-[10px] leading-tight text-muted-foreground/50 sm:text-xs">
+            {"Fingerprint: 4D41 5448 2B43 5340 5549 5543"}
+          </pre>
+          <pre className="font-mono text-[10px] leading-tight text-primary/40 sm:text-xs">
+            {"-----END PGP SIGNATURE-----"}
+          </pre>
+        </div>
+
+        {/* Typing animation tagline */}
+        <div className="mx-auto h-6 max-w-lg">
+          <p className="font-mono text-sm text-primary sm:text-base">
+            {text}
+            <span className="text-primary">{cursor}</span>
+          </p>
+        </div>
 
         {/* Social links */}
         <motion.div
@@ -53,6 +93,16 @@ const Hero = () => {
             </a>
           ))}
         </motion.div>
+
+        {/* Keyboard hint */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="mt-6 font-mono text-[10px] text-muted-foreground/40"
+        >
+          press <kbd className="rounded border border-border px-1 py-0.5 text-muted-foreground/60">Ctrl+/</kbd> to open command palette
+        </motion.p>
       </motion.div>
 
       {/* Scroll indicator */}
@@ -62,8 +112,8 @@ const Hero = () => {
         transition={{ delay: 1, duration: 0.6 }}
         className="absolute bottom-10 flex flex-col items-center gap-2"
       >
-        <span className="text-xs uppercase tracking-widest text-muted-foreground">
-          Scroll
+        <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          scroll
         </span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
