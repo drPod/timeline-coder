@@ -2,9 +2,12 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import type { TimelineEntry } from "@/data/timeline";
 import { getCategoryColor } from "@/lib/gitFormatting";
+import { getPrimaryRepo, getRepoUrl } from "@/lib/githubData";
 
 const FeaturedCard = ({ entry, side }: { entry: TimelineEntry; side: "left" | "right" }) => {
   const categoryColor = getCategoryColor(entry.category);
+  const primaryRepo = getPrimaryRepo(entry.id);
+  const resolvedRepoUrl = getRepoUrl(entry.id);
 
   return (
     <motion.div
@@ -24,7 +27,7 @@ const FeaturedCard = ({ entry, side }: { entry: TimelineEntry; side: "left" | "r
             <div className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
           </div>
           <span className="font-mono text-[11px] text-muted-foreground/60">
-            ~/projects/{entry.id}/README.md
+            ~/{primaryRepo ?? `projects/${entry.id}`}/README.md
           </span>
         </div>
 
@@ -42,9 +45,9 @@ const FeaturedCard = ({ entry, side }: { entry: TimelineEntry; side: "left" | "r
               </h3>
             </div>
             <div className="flex gap-2">
-              {entry.repoUrl && (
+              {(resolvedRepoUrl || (entry.repoUrl && entry.repoUrl !== "#")) && (
                 <a
-                  href={entry.repoUrl}
+                  href={resolvedRepoUrl ?? entry.repoUrl!}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Source code"

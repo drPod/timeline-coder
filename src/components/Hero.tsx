@@ -55,7 +55,7 @@ const Hero = () => {
             Darsh Poddar
           </h1>
           <pre className="font-mono text-[10px] leading-tight text-muted-foreground sm:text-xs">
-            {"Math + CS @ UIUC"}
+            {"Student at UIUC"}
           </pre>
           <pre className="font-mono text-[10px] leading-tight text-muted-foreground/50 sm:text-xs">
             {"Fingerprint: 4D41 5448 2B43 5340 5549 5543"}

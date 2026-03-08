@@ -1,0 +1,80 @@
+{
+  "intellispend": [
+    {
+      "sha": "e3867092c79587dbf02766de48fb6cc5bc6d96dd",
+      "repo": "drPod/Intellispend"
+    }
+  ],
+  "fucknetflix": [
+    {
+      "sha": "dab0f4c3a7fb05a29e54c57b5d54c5d23684089e",
+      "repo": "drPod/fucknetflix"
+    }
+  ],
+  "phantom": [
+    {
+      "sha": "30f816762a7400423ce0163ecb4bf2abe593cb8e",
+      "repo": "drPod/Phantom"
+    }
+  ],
+  "mcp-contrib": [
+    {
+      "sha": "07470d6f2e303c0431e99679941120cb842e8fa1",
+      "repo": "drPod/mcp-google-sheets"
+    },
+    {
+      "sha": "6746f872e8c26ec4f404a2af7a5dc897603d541d",
+      "repo": "drPod/mcp-ical"
+    },
+    {
+      "sha": "4d55fad4f7af178ec5ee544f2ca03a9f17e52077",
+      "repo": "drPod/drawio-mcp-extension"
+    }
+  ],
+  "this-portfolio": [
+    {
+      "sha": "db2103759c346be731e8525dda83fd7875c40ddd",
+      "repo": "drPod/timeline-coder"
+    }
+  ],
+  "cyberpatriot-scripts": [
+    {
+      "sha": "0fbb80ba234b72199abebc0c9e8b0890ae3894e0",
+      "repo": "drPod/CyberPatriot-Scripts"
+    }
+  ],
+  "community-corner": [
+    {
+      "sha": "7a14289bb74e98b9e8114b5f58c188207be26009",
+      "repo": "drPod/Community-Corner-Web"
+    }
+  ],
+  "research-repos": [
+    {
+      "sha": "1d07446c9d9bfcba0d41c5c69fe312a2e23c1d5d",
+      "repo": "drPod/Blame-Data"
+    },
+    {
+      "sha": "13a29919151b6e36338ede4f65ab0722f0bee607",
+      "repo": "drPod/Detecting-Malicious-Commits"
+    }
+  ],
+  "learnx": [
+    {
+      "sha": "7f0cbdf0013979fd6ebf8834059e25556f17fe2b",
+      "repo": "jeff-k-zhou/LearnX"
+    }
+  ],
+  "ccdc-script": [
+    {
+      "sha": "dadf40af681be46ad114cf5337b5f450d6516747",
+      "repo": "drPod/CCDC-Website-Integrity-Script-10-25-2025"
+    }
+  ],
+  "acdec-quiz": [
+    {
+      "sha": "f7586280c41833d926b795eaf5046cf7af68fc11",
+      "repo": "drPod/Academic-Decathlon-Focus-Quiz-Automation"
+    }
+  ]
+}

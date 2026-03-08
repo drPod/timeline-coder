@@ -3,10 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import type { TimelineEntry } from "@/data/timeline";
 import { generateFakeHash, toBranchName, getCategoryColor } from "@/lib/gitFormatting";
+import { getShortHash, getRepoLabel, getRepoUrl } from "@/lib/githubData";
 
 const CompactNode = ({ entry, side, isLatest }: { entry: TimelineEntry; side: "left" | "right"; isLatest?: boolean }) => {
   const [expanded, setExpanded] = useState(false);
-  const hash = generateFakeHash(entry.id);
+  const hash = getShortHash(entry.id) ?? generateFakeHash(entry.id);
+  const repoLabel = getRepoLabel(entry.id);
+  const resolvedRepoUrl = getRepoUrl(entry.id);
   const categoryColor = getCategoryColor(entry.category);
 
   return (
@@ -27,16 +30,26 @@ const CompactNode = ({ entry, side, isLatest }: { entry: TimelineEntry; side: "l
         }`}
       >
         {/* Git log --oneline format */}
-        <div className={`flex items-baseline gap-2 font-mono text-sm ${side === "left" ? "md:flex-row-reverse" : ""}`}>
+        <div className={`flex flex-wrap items-baseline gap-x-2 gap-y-0.5 font-mono text-sm ${side === "left" ? "md:flex-row-reverse" : ""}`}>
           <span style={{ color: categoryColor }} className="shrink-0 text-xs opacity-80">
             {hash}
           </span>
-          {(entry.branch || isLatest) && (
+          {isLatest && (
             <span className="shrink-0 text-xs text-commit-branch">
-              ({isLatest ? "HEAD → main" : `feature/${toBranchName(entry.title)}`})
+              (HEAD → main)
             </span>
           )}
-          <span className="font-medium text-foreground truncate">{entry.title}</span>
+          {repoLabel && !isLatest && (
+            <span className="inline-block max-w-[160px] shrink-0 truncate text-xs text-commit-branch opacity-70 md:max-w-[250px]">
+              ({repoLabel})
+            </span>
+          )}
+          {!repoLabel && entry.branch && !isLatest && (
+            <span className="inline-block max-w-[120px] shrink-0 truncate text-xs text-commit-branch opacity-70 md:max-w-[200px]">
+              (feature/{toBranchName(entry.title)})
+            </span>
+          )}
+          <span className="font-medium text-foreground">{entry.title}</span>
         </div>
 
         <AnimatePresence>
@@ -63,15 +76,15 @@ const CompactNode = ({ entry, side, isLatest }: { entry: TimelineEntry; side: "l
                   </span>
                 ))}
               </div>
-              {(entry.repoUrl || entry.liveUrl) && (
+              {(entry.repoUrl || resolvedRepoUrl || entry.liveUrl) && (
                 <div
                   className={`mt-2 flex gap-3 ${
                     side === "left" ? "md:justify-end" : ""
                   }`}
                 >
-                  {entry.repoUrl && (
+                  {(resolvedRepoUrl || entry.repoUrl) && (
                     <a
-                      href={entry.repoUrl}
+                      href={resolvedRepoUrl ?? entry.repoUrl!}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}

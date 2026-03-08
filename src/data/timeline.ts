@@ -211,7 +211,7 @@ export const timelineData: TimelineEntry[] = [
     year: 2024,
     month: 8,
     title: "Started at UIUC",
-    description: "Math + CS. Joined ACM Corporate Committee, SigEp, SigPWNY. Found my people.",
+    description: "Joined ACM Corporate Committee, SigEp, SigPWNY. Found my people.",
     techStack: ["Math", "CS"],
     type: "compact",
     category: "milestone",
