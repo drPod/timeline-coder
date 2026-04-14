@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import type { IsefEntry } from "@/lib/githubData";
 
 type IsefCardProps = {
@@ -41,7 +42,12 @@ const ModelPlaceholder = () => (
 
 const IsefCard = ({ entry }: IsefCardProps) => {
   return (
-    <div className="group relative mb-5 grid min-h-[240px] grid-cols-1 overflow-hidden rounded-xl border border-white/5 bg-[rgba(6,6,8,0.9)] backdrop-blur-sm transition-all duration-[250ms] hover:-translate-y-px hover:border-[#3ecf8e]/20 hover:shadow-[0_0_24px_-6px_rgba(62,207,142,0.12)] md:grid-cols-2">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="group relative mb-5 grid min-h-[240px] grid-cols-1 overflow-hidden rounded-xl border border-white/5 bg-[rgba(6,6,8,0.9)] backdrop-blur-sm transition-all duration-[250ms] hover:-translate-y-px hover:border-[#3ecf8e]/20 hover:shadow-[0_0_24px_-6px_rgba(62,207,142,0.12)] md:grid-cols-2">
       {/* Left accent bar */}
       <div
         aria-hidden
@@ -121,7 +127,7 @@ const IsefCard = ({ entry }: IsefCardProps) => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

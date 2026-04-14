@@ -26,3 +26,11 @@ dist-ssr
 # Environment variables
 .env
 .env.*
+
+# Brainstorming companion
+.superpowers/
+
+# Local tooling / scratch
+.claude/
+.playwright-mcp/
+docs/content-inventory.md

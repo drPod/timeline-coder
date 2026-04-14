@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import BinaryCanvas from "@/components/canvas/BinaryCanvas";
 import HeroOverlay from "@/components/canvas/HeroOverlay";
 import YearSection from "@/components/timeline/YearSection";
+import LivePreview from "@/components/timeline/LivePreview";
 import CommandPalette from "@/components/CommandPalette";
 import Footer from "@/components/Footer";
 import StatusBar from "@/components/StatusBar";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
 import { getEntriesByYear } from "@/lib/githubData";
+import type { ProjectEntry } from "@/lib/githubData";
 
 const Index = () => {
   const { crtMode, toggleCrt } = useKonamiCode();
   const [isCommandOpen, setIsCommandOpen] = useState(false);
+  const [previewProject, setPreviewProject] = useState<ProjectEntry | null>(
+    null,
+  );
   const entriesByYear = getEntriesByYear();
 
   // Keyboard shortcut for Cmd+K / Ctrl+/ — toggle command palette
@@ -60,6 +66,7 @@ const Index = () => {
               key={year}
               year={year}
               entries={entriesByYear.get(year) || []}
+              onOpenPreview={setPreviewProject}
             />
           ))}
         </div>
@@ -74,6 +81,16 @@ const Index = () => {
       />
 
       <StatusBar />
+
+      {/* Fullscreen live preview modal — rendered once at top level */}
+      <AnimatePresence>
+        {previewProject && (
+          <LivePreview
+            project={previewProject}
+            onClose={() => setPreviewProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };

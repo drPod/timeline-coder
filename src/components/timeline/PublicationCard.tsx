@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import type { PublicationEntry } from "@/lib/githubData";
 
 type PublicationCardProps = {
@@ -33,7 +34,12 @@ const PublicationCard = ({ entry }: PublicationCardProps) => {
   const isUnderReview = entry.status === "under-review";
 
   return (
-    <div className="group relative overflow-hidden rounded-lg border border-white/5 bg-[rgba(6,6,8,0.9)] backdrop-blur-sm transition-all duration-[250ms] hover:-translate-y-px hover:border-[#3ecf8e]/20 hover:shadow-[0_0_24px_-6px_rgba(62,207,142,0.12)]">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="group relative overflow-hidden rounded-lg border border-white/5 bg-[rgba(6,6,8,0.9)] backdrop-blur-sm transition-all duration-[250ms] hover:-translate-y-px hover:border-[#3ecf8e]/20 hover:shadow-[0_0_24px_-6px_rgba(62,207,142,0.12)]">
       {/* Left accent bar — publications = purple */}
       <div
         aria-hidden
@@ -105,7 +111,7 @@ const PublicationCard = ({ entry }: PublicationCardProps) => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

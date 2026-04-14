@@ -1,5 +1,12 @@
+import { motion } from "framer-motion";
 import type { Project } from "@/lib/githubData";
-import { getCategoryColor, getCategoryGlow } from "@/lib/githubData";
+import {
+  getCategoryColor,
+  getCategoryGlow,
+  getScreenshotPath,
+  getVideoPaths,
+} from "@/lib/githubData";
+import ThumbPlaceholder from "./ThumbPlaceholder";
 
 type ProjectCardProps = {
   project: Project;
@@ -10,9 +17,15 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
   const categoryHsl = getCategoryColor(project.category);
   const categoryGlow = getCategoryGlow(project.category);
   const techBadges = project.techStack.slice(0, 4);
+  const video = getVideoPaths(project.id);
+  const screenshot = getScreenshotPath(project.id);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       onClick={onClick}
       className="group relative cursor-pointer overflow-hidden rounded-lg border border-white/5 bg-[rgba(6,6,8,0.9)] backdrop-blur-sm transition-all duration-[250ms] hover:-translate-y-px hover:border-[#3ecf8e]/20 hover:shadow-[0_0_24px_-6px_rgba(62,207,142,0.12)]"
     >
@@ -27,15 +40,29 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
       />
 
       {/* Thumbnail area */}
-      <div
-        className="relative flex h-[100px] items-center justify-center overflow-hidden"
-        style={{
-          background: `linear-gradient(135deg, hsl(${categoryHsl} / 0.08) 0%, rgba(0,0,0,0.6) 100%)`,
-        }}
-      >
-        <span className="font-mono text-[10px] text-white/[0.15]">
-          {project.name}
-        </span>
+      <div className="relative h-[100px] overflow-hidden">
+        {video ? (
+          <video
+            src={video.video}
+            poster={video.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={`${project.name} demo`}
+            className="absolute inset-0 h-full w-full object-cover opacity-85 transition-opacity duration-200 group-hover:opacity-100"
+          />
+        ) : screenshot ? (
+          <img
+            src={screenshot}
+            alt={`${project.name} screenshot`}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover opacity-80 transition-opacity duration-200 group-hover:opacity-100"
+          />
+        ) : (
+          <ThumbPlaceholder id={project.id} name={project.name} category={project.category} size="sm" />
+        )}
 
         {/* Live badge (top-right) */}
         {project.liveUrl && (
@@ -70,7 +97,7 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

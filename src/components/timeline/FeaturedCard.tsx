@@ -1,5 +1,11 @@
+import { motion } from "framer-motion";
 import type { Project } from "@/lib/githubData";
-import { getCategoryColor } from "@/lib/githubData";
+import {
+  getCategoryColor,
+  getScreenshotPath,
+  getVideoPaths,
+} from "@/lib/githubData";
+import ThumbPlaceholder from "./ThumbPlaceholder";
 
 type FeaturedCardProps = {
   project: Project;
@@ -8,9 +14,15 @@ type FeaturedCardProps = {
 
 const FeaturedCard = ({ project, onClick }: FeaturedCardProps) => {
   const categoryHsl = getCategoryColor(project.category);
+  const video = getVideoPaths(project.id);
+  const screenshot = getScreenshotPath(project.id);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       onClick={onClick}
       className="group relative mb-5 grid cursor-pointer grid-cols-1 md:grid-cols-2 md:min-h-[240px] overflow-hidden rounded-lg border border-white/5 bg-[rgba(6,6,8,0.9)] backdrop-blur-sm transition-all duration-[250ms] hover:-translate-y-px hover:border-[#3ecf8e]/20 hover:shadow-[0_0_24px_-6px_rgba(62,207,142,0.12)]"
     >
@@ -25,15 +37,29 @@ const FeaturedCard = ({ project, onClick }: FeaturedCardProps) => {
       />
 
       {/* Left: thumbnail */}
-      <div
-        className="relative flex h-full min-h-[120px] items-center justify-center overflow-hidden md:min-h-0"
-        style={{
-          background: `linear-gradient(135deg, hsl(${categoryHsl} / 0.12) 0%, rgba(0,0,0,0.7) 100%)`,
-        }}
-      >
-        <span className="font-mono text-xs text-white/[0.2]">
-          {project.name}
-        </span>
+      <div className="relative h-full min-h-[160px] overflow-hidden md:min-h-0">
+        {video ? (
+          <video
+            src={video.video}
+            poster={video.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={`${project.name} demo`}
+            className="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-200 group-hover:opacity-100"
+          />
+        ) : screenshot ? (
+          <img
+            src={screenshot}
+            alt={`${project.name} screenshot`}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover opacity-85 transition-opacity duration-200 group-hover:opacity-100"
+          />
+        ) : (
+          <ThumbPlaceholder id={project.id} name={project.name} category={project.category} size="lg" />
+        )}
 
         {/* Live badge (bottom-right) */}
         {project.liveUrl && (
@@ -71,7 +97,7 @@ const FeaturedCard = ({ project, onClick }: FeaturedCardProps) => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

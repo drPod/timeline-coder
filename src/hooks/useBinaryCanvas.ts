@@ -65,14 +65,14 @@ export function useBinaryCanvas() {
     grid.current = newGrid;
 
     // ── Konami text stamp ──
-    // Place the literal letters of "KONAMI CODE" in a single horizontal row
-    // near the middle of the grid. Cells remain low-brightness by default
-    // (cell.tb baseline 0.03) so the text is barely perceptible, but any
-    // cursor / ripple / rain influence lights them up into legibility.
+    // Stamp "KONAMI CODE" near the top-left of the canvas, above where the
+    // centered hero overlay starts, so the hint is discoverable by anyone
+    // who sweeps their cursor up there. Cells keep the baseline 0.03
+    // brightness; cursor/rain/ripple influence lights them into legibility.
     const konami = new Map<number, string>();
     const textLen = KONAMI_TEXT.length;
-    const startCol = Math.max(0, ((cols / 2) | 0) - ((textLen / 2) | 0));
-    const stampRow = Math.max(0, ((rows / 2) | 0) - 2);
+    const startCol = Math.max(2, ((cols * 0.08) | 0));
+    const stampRow = Math.max(2, ((rows * 0.12) | 0));
     for (let i = 0; i < textLen; i++) {
       const c = startCol + i;
       if (c >= cols) break;

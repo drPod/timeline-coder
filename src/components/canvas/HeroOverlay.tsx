@@ -137,6 +137,14 @@ const HeroOverlay = () => {
           ↓
         </motion.span>
       </motion.div>
+
+      {/* Konami code hint — subtle, bottom-left */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-6 left-6 hidden font-mono text-[9px] tracking-wider text-white/[0.12] md:block"
+      >
+        ↑↑↓↓←→←→BA
+      </div>
     </section>
   );
 };

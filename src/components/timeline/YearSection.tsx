@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import type {
   TimelineEntry,
   ProjectEntry,
@@ -17,11 +16,11 @@ import PublicationCard from "./PublicationCard";
 import AwardCard from "./AwardCard";
 import CertificationCard from "./CertificationCard";
 import IsefCard from "./IsefCard";
-import LivePreview from "./LivePreview";
 
 type YearSectionProps = {
   year: number;
   entries: TimelineEntry[];
+  onOpenPreview: (project: ProjectEntry) => void;
 };
 
 /** Returns the top 4 most-common tech stack tags across projects only. */
@@ -38,9 +37,7 @@ function getTopTechTags(projects: ProjectEntry[]): string[] {
     .map(([tag]) => tag);
 }
 
-const YearSection = ({ year, entries }: YearSectionProps) => {
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-
+const YearSection = ({ year, entries, onOpenPreview }: YearSectionProps) => {
   // Split entries by kind using type narrowing
   const projects = entries.filter(
     (e): e is ProjectEntry => e.kind === "project",
@@ -79,15 +76,8 @@ const YearSection = ({ year, entries }: YearSectionProps) => {
 
   const handleProjectClick = (project: ProjectEntry) => {
     if (!project.liveUrl) return;
-    setExpandedId((current) => (current === project.id ? null : project.id));
+    onOpenPreview(project);
   };
-
-  const expandedGridProject = nonFeaturedProjects.find(
-    (p) => p.id === expandedId,
-  );
-
-  const featuredProjectLive =
-    featured?.kind === "project" ? featured : undefined;
 
   const awardsAndCerts = [...awards, ...certifications];
 
@@ -95,7 +85,13 @@ const YearSection = ({ year, entries }: YearSectionProps) => {
     <>
       <section className="mb-14 pt-6">
         {/* Year header */}
-        <div className="mb-7 flex items-baseline gap-4 border-b border-[#3ecf8e]/10 pb-5">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mb-7 flex items-baseline gap-4 border-b border-[#3ecf8e]/10 pb-5"
+        >
           <span className="font-mono text-[48px] md:text-[64px] font-bold leading-none tracking-tight text-white/[0.06]">
             {year}
           </span>
@@ -109,7 +105,7 @@ const YearSection = ({ year, entries }: YearSectionProps) => {
               </span>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* Featured entry — routed by kind */}
         {featured && (
@@ -118,21 +114,10 @@ const YearSection = ({ year, entries }: YearSectionProps) => {
               <IsefCard entry={featured as IsefEntry} />
             )}
             {featured.kind === "project" && (
-              <>
-                <FeaturedCard
-                  project={featured as ProjectEntry}
-                  onClick={() => handleProjectClick(featured as ProjectEntry)}
-                />
-                <AnimatePresence initial={false}>
-                  {expandedId === featured.id && featuredProjectLive && (
-                    <LivePreview
-                      key={featured.id}
-                      project={featuredProjectLive}
-                      onClose={() => setExpandedId(null)}
-                    />
-                  )}
-                </AnimatePresence>
-              </>
+              <FeaturedCard
+                project={featured as ProjectEntry}
+                onClick={() => handleProjectClick(featured as ProjectEntry)}
+              />
             )}
             {featured.kind === "publication" && (
               <div className="mb-5">
@@ -172,17 +157,6 @@ const YearSection = ({ year, entries }: YearSectionProps) => {
             ))}
           </div>
         )}
-
-        {/* Preview for expanded grid card (renders below the grid, full width) */}
-        <AnimatePresence initial={false}>
-          {expandedGridProject && (
-            <LivePreview
-              key={expandedGridProject.id}
-              project={expandedGridProject}
-              onClose={() => setExpandedId(null)}
-            />
-          )}
-        </AnimatePresence>
 
         {/* Awards + certifications combined row */}
         {awardsAndCerts.length > 0 && (

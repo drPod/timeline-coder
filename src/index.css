@@ -74,6 +74,52 @@
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
 }
 
+/* Full green tint + chromatic aberration — makes the CRT mode unmistakable */
+.crt-mode body,
+body.crt-mode {
+  filter: hue-rotate(-8deg) saturate(1.4) brightness(0.95);
+}
+
+.crt-mode .scanlines-overlay {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(62, 207, 142, 0) 0,
+    rgba(62, 207, 142, 0) 1px,
+    rgba(62, 207, 142, 0.09) 2px,
+    rgba(62, 207, 142, 0.09) 3px
+  ) !important;
+  animation: crt-flicker 3s linear infinite;
+}
+
+.crt-mode .vignette-overlay {
+  background:
+    radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.75)),
+    linear-gradient(rgba(62, 207, 142, 0.05), rgba(62, 207, 142, 0.05)) !important;
+}
+
+/* Flicker on the scanlines */
+@keyframes crt-flicker {
+  0%, 100% { opacity: 1; }
+  8% { opacity: 0.96; }
+  9% { opacity: 1; }
+  50% { opacity: 0.98; }
+  51% { opacity: 1; }
+}
+
+/* When CRT mode is on, push every text element into green + add a subtle glow */
+.crt-mode h1,
+.crt-mode h2,
+.crt-mode h3,
+.crt-mode h4,
+.crt-mode p,
+.crt-mode span,
+.crt-mode a,
+.crt-mode div,
+.crt-mode pre,
+.crt-mode kbd {
+  text-shadow: 0 0 4px rgba(62, 207, 142, 0.45) !important;
+}
+
 /* Glitch effect — triggered by clicking name 5 times */
 @keyframes glitch {
   0% {
