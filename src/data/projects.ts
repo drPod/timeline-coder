@@ -252,7 +252,9 @@ const mention: ProjectOverride[] = [
     pitch:
       "DFW pilot sequences ranked by weather-cascade risk. XGBoost on 842K flights, 78% more delay minutes caught than baseline.",
     category: "research",
+    featured: true,
     year: 2026,
+    liveUrl: "https://stormchain.streamlit.app/",
   },
   {
     repoName: "campuschai-landing-page",

@@ -7,6 +7,7 @@ import type {
   AwardEntry,
   CertificationEntry,
   IsefEntry,
+  ContributionEntry,
 } from "@/lib/githubData";
 import { getFeaturedEntry } from "@/lib/githubData";
 import FeaturedCard from "./FeaturedCard";
@@ -16,11 +17,18 @@ import PublicationCard from "./PublicationCard";
 import AwardCard from "./AwardCard";
 import CertificationCard from "./CertificationCard";
 import IsefCard from "./IsefCard";
+import ContributionCard from "./ContributionCard";
 
 type YearSectionProps = {
   year: number;
   entries: TimelineEntry[];
   onOpenPreview: (project: ProjectEntry) => void;
+  /**
+   * Entry IDs to exclude from rendering (e.g. flagship project IDs that
+   * appear above in the flagship section and shouldn't render twice).
+   * Applied to both the featured lookup and the entries list.
+   */
+  excludeIds?: Set<string>;
 };
 
 /** Returns the top 4 most-common tech stack tags across projects only. */
@@ -37,25 +45,49 @@ function getTopTechTags(projects: ProjectEntry[]): string[] {
     .map(([tag]) => tag);
 }
 
-const YearSection = ({ year, entries, onOpenPreview }: YearSectionProps) => {
+const YearSection = ({
+  year,
+  entries,
+  onOpenPreview,
+  excludeIds,
+}: YearSectionProps) => {
+  // Drop any entries whose id is in the exclude list (e.g. flagships)
+  const visibleEntries = excludeIds
+    ? entries.filter((e) => !excludeIds.has(e.id))
+    : entries;
+
   // Split entries by kind using type narrowing
-  const projects = entries.filter(
+  const projects = visibleEntries.filter(
     (e): e is ProjectEntry => e.kind === "project",
   );
-  const experiences = entries.filter(
+  const experiences = visibleEntries.filter(
     (e): e is ExperienceEntry => e.kind === "experience",
   );
-  const publications = entries.filter(
+  const publications = visibleEntries.filter(
     (e): e is PublicationEntry => e.kind === "publication",
   );
-  const awards = entries.filter((e): e is AwardEntry => e.kind === "award");
-  const certifications = entries.filter(
+  const awards = visibleEntries.filter(
+    (e): e is AwardEntry => e.kind === "award",
+  );
+  const certifications = visibleEntries.filter(
     (e): e is CertificationEntry => e.kind === "certification",
   );
+  const contributions = visibleEntries.filter(
+    (e): e is ContributionEntry => e.kind === "contribution",
+  );
+
+  // If no visible entries for this year after exclusion, render nothing
+  if (visibleEntries.length === 0) return null;
 
   // Featured entry for the year (cross-kind). May be an ISEF, a project,
-  // or a publication depending on what is marked featured.
-  const featured = getFeaturedEntry(year);
+  // or a publication depending on what is marked featured. If the top
+  // featured entry is excluded (it's a flagship, rendered above), fall
+  // back to the next-best featured entry from the visible set.
+  const rawFeatured = getFeaturedEntry(year);
+  const featured =
+    rawFeatured && !excludeIds?.has(rawFeatured.id)
+      ? rawFeatured
+      : visibleEntries.find((e) => e.featured);
 
   // Non-featured projects (shown in the grid)
   const nonFeaturedProjects = featured
@@ -155,6 +187,20 @@ const YearSection = ({ year, entries, onOpenPreview }: YearSectionProps) => {
                 onClick={() => handleProjectClick(project)}
               />
             ))}
+          </div>
+        )}
+
+        {/* Open-source contributions */}
+        {contributions.length > 0 && (
+          <div className="mt-5">
+            <div className="mb-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#4b6bfc]/60">
+              &gt; open source
+            </div>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              {contributions.map((c) => (
+                <ContributionCard key={c.id} entry={c} />
+              ))}
+            </div>
           </div>
         )}
 

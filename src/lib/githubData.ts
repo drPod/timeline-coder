@@ -27,7 +27,8 @@ type TimelineEntryBase = {
     | "publication"
     | "award"
     | "certification"
-    | "isef";
+    | "isef"
+    | "contribution";
   year: number;
   month: number;
   featured?: boolean;
@@ -94,13 +95,25 @@ export type IsefEntry = TimelineEntryBase & {
   modelUrl?: string;
 };
 
+export type ContributionEntry = TimelineEntryBase & {
+  kind: "contribution";
+  upstream: string;            // "openai/openai-agents-python"
+  prTitle: string;             // PR title
+  prNumber: number;            // PR number
+  prUrl: string;               // full URL
+  prState: "merged" | "open" | "closed";
+  contribution: string;        // 1-line what it did
+  upstreamStars?: number;      // upstream repo stars if impressive (>= 1k)
+};
+
 export type TimelineEntry =
   | ProjectEntry
   | ExperienceEntry
   | PublicationEntry
   | AwardEntry
   | CertificationEntry
-  | IsefEntry;
+  | IsefEntry
+  | ContributionEntry;
 
 // Backward compat — keep Project type as alias to ProjectEntry
 export type Project = ProjectEntry;
@@ -317,6 +330,7 @@ const FEATURED_KIND_PRIORITY: Record<TimelineEntry["kind"], number> = {
   experience: 3,
   award: 4,
   certification: 5,
+  contribution: 6,
 };
 
 /**

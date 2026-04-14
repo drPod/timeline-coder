@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { AnimatePresence } from "framer-motion";
 import BinaryCanvas from "@/components/canvas/BinaryCanvas";
 import HeroOverlay from "@/components/canvas/HeroOverlay";
+import FlagshipSection from "@/components/flagship/FlagshipSection";
 import YearSection from "@/components/timeline/YearSection";
 import LivePreview from "@/components/timeline/LivePreview";
 import CommandPalette from "@/components/CommandPalette";
@@ -10,6 +11,8 @@ import StatusBar from "@/components/StatusBar";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
 import { getEntriesByYear } from "@/lib/githubData";
 import type { ProjectEntry } from "@/lib/githubData";
+import { flagshipIds } from "@/data/flagships";
+import type { FlagshipProject } from "@/data/flagships";
 
 const Index = () => {
   const { crtMode, toggleCrt } = useKonamiCode();
@@ -46,6 +49,33 @@ const Index = () => {
   // Convert Map to sorted array (descending year)
   const years = Array.from(entriesByYear.keys()).sort((a, b) => b - a);
 
+  /**
+   * Synthesises a ProjectEntry for a flagship so LivePreview can open.
+   * Only called when a flagship has a liveUrl the user wants to pop.
+   */
+  const flagshipToProject = useMemo(
+    () =>
+      (f: FlagshipProject): ProjectEntry => ({
+        id: f.id,
+        kind: "project" as const,
+        name: f.name,
+        pitch: f.story,
+        category: "tool",
+        year: f.year,
+        month: 1,
+        techStack: [],
+        liveUrl: f.liveUrl,
+        repoUrl: f.repoUrl,
+        featured: true,
+      }),
+    [],
+  );
+
+  const handleOpenLive = (flagship: FlagshipProject) => {
+    if (!flagship.liveUrl) return;
+    setPreviewProject(flagshipToProject(flagship));
+  };
+
   return (
     <>
       <BinaryCanvas />
@@ -55,10 +85,13 @@ const Index = () => {
       {/* Hero section — canvas is fixed, this is the overlay content */}
       <HeroOverlay />
 
-      {/* Gradient transition from transparent to timeline background */}
+      {/* Gradient transition from transparent to flagship background */}
       <div className="hero-to-timeline-fade" />
 
-      {/* Timeline section */}
+      {/* Flagship projects — cinematic full-bleed */}
+      <FlagshipSection onOpenLive={handleOpenLive} />
+
+      {/* Timeline section (flagship IDs filtered out so they don't render twice) */}
       <div className="timeline-wrapper">
         <div className="timeline-container">
           {years.map((year) => (
@@ -67,6 +100,7 @@ const Index = () => {
               year={year}
               entries={entriesByYear.get(year) || []}
               onOpenPreview={setPreviewProject}
+              excludeIds={flagshipIds}
             />
           ))}
         </div>
