@@ -22,7 +22,7 @@ const FlagshipSection = ({ onOpenLive }: FlagshipSectionProps) => {
       aria-label="Flagship projects"
       className="relative z-[2] bg-[rgba(0,0,0,0.88)]"
     >
-      <div className="mx-auto max-w-[1280px] px-8 md:px-12">
+      <div className="mx-auto max-w-[1280px] px-5 md:px-12">
         {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -68,10 +68,10 @@ const FlagshipPanel = ({ project, index, onOpenLive }: FlagshipPanelProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-120px" }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="relative flex min-h-[88vh] flex-col justify-center border-b border-white/[0.04] py-20"
+      className="relative flex min-h-[88vh] flex-col justify-center border-b border-white/[0.04] py-14 md:py-20"
     >
       {/* Year + index */}
-      <div className="mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/30">
+      <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white/30 md:mb-5 md:text-[11px]">
         <span className="text-[#3ecf8e]/60">
           {String(index + 1).padStart(2, "0")}
         </span>
@@ -98,7 +98,7 @@ const FlagshipPanel = ({ project, index, onOpenLive }: FlagshipPanelProps) => {
       </p>
 
       {/* Two-column split */}
-      <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-5">
+      <div className="mt-8 grid grid-cols-1 gap-6 md:mt-10 md:gap-8 lg:grid-cols-5">
         {/* Demo column — 3/5 width on large */}
         <div className="lg:col-span-3">
           <DemoPicker project={project} onOpenLive={onOpenLive} />
@@ -151,7 +151,7 @@ const FlagshipPanel = ({ project, index, onOpenLive }: FlagshipPanelProps) => {
       </div>
 
       {/* Links row */}
-      <div className="mt-8 flex flex-wrap items-center gap-5 border-t border-white/5 pt-5">
+      <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/5 pt-5">
         <a
           href={project.repoUrl}
           target="_blank"

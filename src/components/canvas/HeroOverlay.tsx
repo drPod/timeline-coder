@@ -16,7 +16,7 @@ const HeroOverlay = () => {
   const stats = getProjectStats();
 
   return (
-    <section
+    <header
       className="pointer-events-none relative z-[2] flex h-screen flex-col items-center justify-center"
     >
       <motion.div
@@ -145,7 +145,7 @@ const HeroOverlay = () => {
       >
         ↑↑↓↓←→←→BA
       </div>
-    </section>
+    </header>
   );
 };
 

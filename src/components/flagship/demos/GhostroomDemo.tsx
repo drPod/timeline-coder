@@ -156,11 +156,14 @@ const GhostroomDemo = () => {
     <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-[#3ecf8e]/20 bg-[rgba(6,6,8,0.92)] shadow-[0_0_40px_-10px_rgba(62,207,142,0.15)]">
       {/* Header */}
       <div className="flex h-9 items-center gap-2 border-b border-white/5 bg-white/[0.02] px-3">
-        <span aria-hidden className="h-2 w-2 rounded-full bg-[#3ecf8e]" />
-        <span className="font-mono text-[10px] text-white/40">
-          ghostroom.live · 20 / 20 containers up · qwen2.5-7b-instruct
+        <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-[#3ecf8e]" />
+        <span className="truncate font-mono text-[10px] text-white/40">
+          <span className="md:hidden">ghostroom.live · 20/20 up</span>
+          <span className="hidden md:inline">
+            ghostroom.live · 20 / 20 containers up · qwen2.5-7b-instruct
+          </span>
         </span>
-        <span className="ml-auto font-mono text-[10px] text-[#3ecf8e]/60">
+        <span className="ml-auto hidden shrink-0 font-mono text-[10px] text-[#3ecf8e]/60 sm:inline">
           ▲ {leaderboard[0]?.name}
         </span>
       </div>
@@ -173,7 +176,7 @@ const GhostroomDemo = () => {
       </div>
 
       {/* Scoreboard */}
-      <div className="flex items-center gap-4 border-t border-white/5 bg-white/[0.02] px-3 py-2">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-white/5 bg-white/[0.02] px-3 py-2 md:gap-4">
         <span className="font-mono text-[9px] uppercase tracking-wider text-white/30">
           leaderboard
         </span>
@@ -183,7 +186,7 @@ const GhostroomDemo = () => {
             className="flex items-center gap-1.5 font-mono text-[10px]"
           >
             <span className="text-white/30">{i + 1}.</span>
-            <span className="text-white/70">{t.name}</span>
+            <span className="truncate text-white/70">{t.name}</span>
             <span className="text-[#3ecf8e]/70">{t.score}</span>
           </span>
         ))}

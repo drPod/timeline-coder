@@ -17,7 +17,7 @@ type Line = {
 
 const SCRIPT: Line[] = [
   { kind: "cmd", text: "$ coldshot run --target acme-health.co", delay: 600 },
-  { kind: "divider", text: "─".repeat(48), delay: 200 },
+  { kind: "divider", text: "─".repeat(32), delay: 200 },
   { kind: "step", text: "[1/7] discover      sumble.com/search", delay: 500 },
   { kind: "data", text: "       → 47 candidates matched ICP (llm+b2b+>50)", delay: 400 },
   { kind: "step", text: "[2/7] qualify       claude-sonnet + web.search", delay: 600 },
@@ -35,7 +35,7 @@ const SCRIPT: Line[] = [
   { kind: "step", text: "[6/7] review        opening $EDITOR (vim)…", delay: 600 },
   { kind: "step", text: "[7/7] send          gmail api → 200 OK", delay: 500 },
   { kind: "ok", text: "✓ sent in 41.8s · 16 llm calls · $0.38 api", delay: 400 },
-  { kind: "divider", text: "─".repeat(48), delay: 200 },
+  { kind: "divider", text: "─".repeat(32), delay: 200 },
   { kind: "info", text: "DRAFT PREVIEW", delay: 200 },
 ];
 
@@ -110,8 +110,8 @@ const ColdshotDemo = () => {
       </div>
 
       {/* Terminal body */}
-      <div className="flex-1 overflow-hidden bg-black p-4">
-        <pre className="font-mono text-[11px] leading-[1.6]">
+      <div className="flex-1 overflow-hidden bg-black p-3 md:p-4">
+        <pre className="whitespace-pre-wrap break-words font-mono text-[10px] leading-[1.6] md:text-[11px]">
           {lines.map((ln, i) => (
             <div key={i} className={kindColor[ln.kind]}>
               {ln.text}
@@ -133,7 +133,7 @@ const ColdshotDemo = () => {
               <span className="text-white/30">subject:</span>
               <span className="text-white/90">{DRAFT.subject}</span>
             </div>
-            <pre className="whitespace-pre-wrap font-mono text-[10.5px] leading-[1.55] text-white/80">
+            <pre className="whitespace-pre-wrap break-words font-mono text-[10px] leading-[1.55] text-white/80 md:text-[10.5px]">
               {DRAFT.body}
             </pre>
           </div>

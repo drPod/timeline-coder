@@ -96,31 +96,33 @@ const Index = () => {
       <div className="scanlines-overlay" />
       <div className="vignette-overlay" />
 
-      {/* Hero section — canvas is fixed, this is the overlay content */}
-      <HeroOverlay />
+      <main>
+        {/* Hero section — canvas is fixed, this is the overlay content */}
+        <HeroOverlay />
 
-      {/* Gradient transition from transparent to flagship background */}
-      <div className="hero-to-timeline-fade" />
+        {/* Gradient transition from transparent to flagship background */}
+        <div className="hero-to-timeline-fade" />
 
-      {/* Flagship projects — cinematic full-bleed */}
-      <FlagshipSection onOpenLive={handleOpenLive} />
+        {/* Flagship projects — cinematic full-bleed */}
+        <FlagshipSection onOpenLive={handleOpenLive} />
 
-      {/* Timeline section — month-grouped chronological flow.
-          Flagship IDs are filtered out above so they don't render twice. */}
-      <div className="timeline-wrapper">
-        <div className="timeline-container">
-          {monthGroups.map((g) => (
-            <MonthSection
-              key={g.key}
-              year={g.year}
-              month={g.month}
-              entries={g.entries}
-              showYear={g.showYear}
-              onOpenPreview={setPreviewProject}
-            />
-          ))}
+        {/* Timeline section — month-grouped chronological flow.
+            Flagship IDs are filtered out above so they don't render twice. */}
+        <div className="timeline-wrapper">
+          <div className="timeline-container">
+            {monthGroups.map((g) => (
+              <MonthSection
+                key={g.key}
+                year={g.year}
+                month={g.month}
+                entries={g.entries}
+                showYear={g.showYear}
+                onOpenPreview={setPreviewProject}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
 

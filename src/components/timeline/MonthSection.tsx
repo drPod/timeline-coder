@@ -89,7 +89,7 @@ const MonthSection = ({
         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="mb-4 flex items-center gap-3"
       >
-        <span
+        <h3
           className={
             showYear
               ? "font-mono text-[13px] font-semibold uppercase tracking-[0.22em] text-[#3ecf8e]/70"
@@ -97,7 +97,7 @@ const MonthSection = ({
           }
         >
           {headerLabel}
-        </span>
+        </h3>
         <span
           aria-hidden
           className={

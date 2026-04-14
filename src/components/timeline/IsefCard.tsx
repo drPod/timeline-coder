@@ -42,7 +42,7 @@ const ModelPlaceholder = () => (
 
 const IsefCard = ({ entry }: IsefCardProps) => {
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -81,9 +81,9 @@ const IsefCard = ({ entry }: IsefCardProps) => {
         </div>
 
         {/* Name */}
-        <h3 className="mt-2 font-mono text-[24px] font-bold leading-tight tracking-tight text-white">
+        <h4 className="mt-2 font-mono text-[24px] font-bold leading-tight tracking-tight text-white">
           {entry.name}
-        </h3>
+        </h4>
 
         {/* Pitch */}
         <p
@@ -127,7 +127,7 @@ const IsefCard = ({ entry }: IsefCardProps) => {
           </div>
         )}
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 

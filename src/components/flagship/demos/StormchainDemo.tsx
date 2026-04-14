@@ -58,11 +58,14 @@ const StormchainDemo = () => {
     <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-[#3ecf8e]/20 bg-[#0b0b0e] shadow-[0_0_40px_-10px_rgba(62,207,142,0.15)]">
       {/* Header */}
       <div className="flex h-9 items-center gap-2 border-b border-white/5 bg-white/[0.02] px-3">
-        <span aria-hidden className="h-2 w-2 rounded-full bg-[#3ecf8e]" />
-        <span className="font-mono text-[10px] text-white/40">
-          stormchain.streamlit.app · DFW cascade dashboard
+        <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-[#3ecf8e]" />
+        <span className="truncate font-mono text-[10px] text-white/40">
+          <span className="sm:hidden">stormchain · DFW cascade</span>
+          <span className="hidden sm:inline">
+            stormchain.streamlit.app · DFW cascade dashboard
+          </span>
         </span>
-        <span className="ml-auto font-mono text-[10px] text-white/30">
+        <span className="ml-auto hidden shrink-0 font-mono text-[10px] text-white/30 sm:inline">
           season: winter 2024-25
         </span>
       </div>
@@ -79,7 +82,7 @@ const StormchainDemo = () => {
               <div className="font-mono text-[9px] uppercase tracking-wider text-white/40">
                 {s.label}
               </div>
-              <div className="mt-1 font-mono text-[22px] font-bold text-white">
+              <div className="mt-1 font-mono text-[18px] font-bold text-white md:text-[22px]">
                 {s.value}
               </div>
               <div className="mt-1 font-mono text-[9px] text-[#3ecf8e]/70">
@@ -162,8 +165,8 @@ const StormchainDemo = () => {
                   <th className="pb-1.5 pr-2 font-normal">#</th>
                   <th className="pb-1.5 pr-2 font-normal">pair</th>
                   <th className="pb-1.5 pr-2 font-normal">risk</th>
-                  <th className="pb-1.5 pr-2 font-normal">Δ min</th>
-                  <th className="pb-1.5 font-normal">swap →</th>
+                  <th className="hidden pb-1.5 pr-2 font-normal sm:table-cell">Δ min</th>
+                  <th className="hidden pb-1.5 font-normal sm:table-cell">swap →</th>
                 </tr>
               </thead>
               <tbody>
@@ -174,8 +177,8 @@ const StormchainDemo = () => {
                     <td className="py-1.5 pr-2">
                       <RiskBar value={row.risk} />
                     </td>
-                    <td className="py-1.5 pr-2 text-amber-300/80">+{row.minutes}</td>
-                    <td className="py-1.5 text-[#3ecf8e]/80">{row.alt}</td>
+                    <td className="hidden py-1.5 pr-2 text-amber-300/80 sm:table-cell">+{row.minutes}</td>
+                    <td className="hidden py-1.5 text-[#3ecf8e]/80 sm:table-cell">{row.alt}</td>
                   </tr>
                 ))}
               </tbody>

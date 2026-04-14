@@ -21,7 +21,7 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
   const screenshot = getScreenshotPath(project.id);
 
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -78,9 +78,9 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
 
       {/* Content area */}
       <div className="flex flex-col gap-1.5 p-3">
-        <h3 className="font-mono text-[13px] font-bold text-white">
+        <h4 className="font-mono text-[13px] font-bold text-white">
           {project.name}
-        </h3>
+        </h4>
         <p className="font-sans text-[11px] leading-snug text-white/[0.35] line-clamp-3">
           {project.pitch}
         </p>
@@ -97,7 +97,7 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
           </div>
         )}
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 

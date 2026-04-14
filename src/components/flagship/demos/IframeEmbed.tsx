@@ -45,7 +45,7 @@ const IframeEmbed = ({ url, title, onOpenFullscreen }: IframeEmbedProps) => {
       {/* Iframe — zoomed out so the whole app fits without interior scrolling.
           The iframe itself is rendered at 1/scale (~143%) and scaled down via
           CSS, so the visual result is the site at ~70% zoom. */}
-      <div className="relative h-[480px] w-full overflow-hidden bg-[#020204] md:h-[540px]">
+      <div className="relative h-[360px] w-full overflow-hidden bg-[#020204] sm:h-[480px] md:h-[540px]">
         {!loaded && (
           <div className="absolute inset-0 z-10 flex items-center justify-center">
             <span className="font-mono text-[11px] text-white/30">

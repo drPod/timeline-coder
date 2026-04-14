@@ -23,7 +23,7 @@ function formatRange(entry: ExperienceEntry): string {
 
 const ExperienceCard = ({ entry }: ExperienceCardProps) => {
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -42,9 +42,9 @@ const ExperienceCard = ({ entry }: ExperienceCardProps) => {
         {/* Top row: company/role (left) + dates (right) */}
         <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between md:gap-4">
           <div className="flex flex-col md:flex-row md:items-baseline md:gap-2">
-            <span className="font-mono text-[14px] font-bold text-white">
+            <h4 className="font-mono text-[14px] font-bold text-white">
               {entry.company}
-            </span>
+            </h4>
             <span className="hidden font-mono text-[13px] text-white/60 md:inline">
               · {entry.role}
             </span>
@@ -72,7 +72,7 @@ const ExperienceCard = ({ entry }: ExperienceCardProps) => {
           </p>
         )}
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 

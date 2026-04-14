@@ -22,7 +22,7 @@ const VideoDemo = ({ src, poster, label }: VideoDemoProps) => {
         </span>
       </div>
 
-      <div className="relative h-[480px] w-full bg-black md:h-[540px]">
+      <div className="relative h-[360px] w-full bg-black sm:h-[480px] md:h-[540px]">
         <video
           src={src}
           poster={poster}

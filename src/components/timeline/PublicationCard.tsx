@@ -34,7 +34,7 @@ const PublicationCard = ({ entry }: PublicationCardProps) => {
   const isUnderReview = entry.status === "under-review";
 
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -63,12 +63,12 @@ const PublicationCard = ({ entry }: PublicationCardProps) => {
         </div>
 
         {/* Title (sans, readable) */}
-        <h3
+        <h4
           className="mt-2 font-sans text-[14px] font-bold text-white"
           style={{ lineHeight: 1.3 }}
         >
           {entry.title}
-        </h3>
+        </h4>
 
         {/* Authors */}
         <p className="mt-2 font-mono text-[11px] text-white/35">
@@ -111,7 +111,7 @@ const PublicationCard = ({ entry }: PublicationCardProps) => {
           </div>
         )}
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
