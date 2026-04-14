@@ -1,0 +1,257 @@
+import type { TimelineEntry } from "@/lib/githubData";
+
+export const manualEntries: TimelineEntry[] = [
+  // ============ EXPERIENCE ============
+  {
+    id: "exp-respan",
+    kind: "experience",
+    year: 2026,
+    month: 3,
+    company: "Respan",
+    role: "Product Engineer",
+    location: "San Francisco Bay Area",
+    pitch:
+      "Full-time product engineering at the LLM observability startup (YC W24, formerly Keywords AI).",
+    url: "https://respan.ai",
+  },
+  {
+    id: "exp-uiuc-ca",
+    kind: "experience",
+    year: 2026,
+    month: 1,
+    endYear: 2026,
+    endMonth: 5,
+    company: "UIUC CS 124 Honors",
+    role: "Course Assistant",
+    location: "Urbana-Champaign, IL",
+    pitch:
+      "Selected as a course assistant for CS 124 Honors as a freshman.",
+  },
+  {
+    id: "exp-urbanpiper-pd",
+    kind: "experience",
+    year: 2025,
+    month: 7,
+    endYear: 2025,
+    endMonth: 8,
+    company: "UrbanPiper",
+    role: "Product Developer",
+    location: "Plano, TX",
+    pitch:
+      "Ran 300+ beta tests of Voice AI, building out the testing framework. Shipped Periscope downtime analysis across GrubHub, DoorDash, Uber Eats.",
+  },
+  {
+    id: "exp-urbanpiper-sales",
+    kind: "experience",
+    year: 2025,
+    month: 5,
+    endYear: 2025,
+    endMonth: 6,
+    company: "UrbanPiper",
+    role: "AI Sales Agent",
+    location: "DFW Metroplex, TX",
+    pitch:
+      "Pitched AI product to 150+ restaurants. Revenue analysis in Python on 10K+ lines of market data.",
+  },
+  {
+    id: "exp-utd-isl",
+    kind: "experience",
+    year: 2024,
+    month: 6,
+    endYear: 2024,
+    endMonth: 8,
+    company: "UT Dallas — Intelligent Security Lab",
+    role: "High School Intern Lead",
+    location: "Richardson, TX",
+    pitch:
+      "Led a team of interns under Prof. Xinda Wang on LSTM-based vulnerability detection. 89% classification accuracy. Two papers accepted at international security conferences.",
+  },
+
+  // ============ PUBLICATIONS ============
+  {
+    id: "pub-securecomm",
+    kind: "publication",
+    year: 2024,
+    month: 10,
+    title:
+      "Enhancing Pre-Trained Language Models for Vulnerability Detection via Semantic-Preserving Data Augmentation",
+    venue: "SecureComm 2024",
+    authors: ["Qi, W.", "Cao, J.", "Poddar, D.", "Li, S.", "Wang, X."],
+    arxivUrl: "https://arxiv.org/abs/2410.00249",
+    status: "published",
+  },
+  {
+    id: "pub-acsac-artman",
+    kind: "publication",
+    year: 2024,
+    month: 12,
+    title:
+      "When AI Meets Code Analysis: A Study of Adversarial Attacks on Deep Learning-based Code Models via Program Transformation",
+    venue: "ACSAC 2024 Workshops (ARTMAN)",
+    authors: [
+      "Rath, A.",
+      "Li, Y.",
+      "Davis, T.",
+      "Bronaugh, B.",
+      "Poddar, D.",
+      "Li, S.",
+    ],
+    ieeeUrl: "https://ieeexplore.ieee.org/document/10918233",
+    doi: "10.1109/ACSACW65225.2024.00017",
+    status: "published",
+  },
+
+  // ============ ISEF ============
+  {
+    id: "isef-qsrtls",
+    kind: "isef",
+    year: 2024,
+    month: 2,
+    featured: true,
+    name: "QSR-TLS",
+    pitch:
+      "A quantum photo-optic protocol for post-quantum secure communication — built both the algorithm and the physical QKD hardware.",
+    description:
+      "Built a post-quantum secure TLS algorithm integrating quantum key distribution. Constructed physical QKD apparatus with InGaAs avalanche photodiode, 850nm laser diode, polarizing films, and polarization-maintaining fiber. Published paper + working hardware demonstration.",
+    techStack: ["Arduino", "InGaAs APD", "Laser Diode", "Python", "QKD"],
+    category: "Embedded Systems",
+    fair: "Dallas Regional Science & Engineering Fair",
+    grade: "11th grade",
+    coAuthors: ["Smaran Manchala"],
+  },
+
+  // ============ AWARDS ============
+  {
+    id: "award-acdec-nationals-25",
+    kind: "award",
+    year: 2025,
+    month: 4,
+    title:
+      "Academic Decathlon Nationals — Division I Speech + Literature Finals",
+    competition: "Academic Decathlon",
+    placement: "First student in school's 5A history to compete at Nationals",
+  },
+  {
+    id: "award-acdec-state-25",
+    kind: "award",
+    year: 2025,
+    month: 2,
+    title: "Academic Decathlon TX State — Mathematics (Statistics)",
+    competition: "Academic Decathlon",
+    placement: "3rd place",
+  },
+  {
+    id: "award-acdec-scholarship",
+    kind: "award",
+    year: 2025,
+    month: 3,
+    title: "Texas Academic Decathlon Scholarship",
+    competition: "Academic Decathlon",
+    placement: "$2,250 awarded",
+  },
+  {
+    id: "award-bpa-best-chapter",
+    kind: "award",
+    year: 2024,
+    month: 5,
+    title: "BPA Texas — Best Chapter of 510",
+    competition: "Business Professionals of America",
+    placement: "1st in Texas (of 510 chapters)",
+  },
+  {
+    id: "award-bpa-webapp",
+    kind: "award",
+    year: 2024,
+    month: 5,
+    title: "BPA Nationals — Web Application Team",
+    competition: "Business Professionals of America",
+    placement: "6th nationally",
+  },
+  {
+    id: "award-acdec-state-24",
+    kind: "award",
+    year: 2024,
+    month: 2,
+    title: "Academic Decathlon TX State — Technology/Social Science",
+    competition: "Academic Decathlon",
+    placement: "1st place (History of Computing)",
+  },
+  {
+    id: "award-cyberpatriot-24",
+    kind: "award",
+    year: 2024,
+    month: 4,
+    title: "CyberPatriot — Gold Tier",
+    competition: "CyberPatriot National",
+    placement: "Gold",
+  },
+  {
+    id: "award-picoctf-24",
+    kind: "award",
+    year: 2024,
+    month: 4,
+    title: "PicoCTF (Carnegie Mellon)",
+    competition: "PicoCTF",
+    placement: "Top 3% nationally",
+  },
+  {
+    id: "award-cyberpatriot-23",
+    kind: "award",
+    year: 2023,
+    month: 4,
+    title: "CyberPatriot — Gold, 3rd in Texas",
+    competition: "CyberPatriot National",
+    placement: "Gold · 3rd in Texas",
+  },
+  {
+    id: "award-bpa-cyber-23",
+    kind: "award",
+    year: 2023,
+    month: 5,
+    title: "BPA Nationals — Cybersecurity/Digital Forensics",
+    competition: "Business Professionals of America",
+    placement: "2nd place nationally",
+  },
+
+  // ============ CERTIFICATIONS ============
+  {
+    id: "cert-ccna",
+    kind: "certification",
+    year: 2023,
+    month: 5,
+    title: "CCNA: Introduction to Networks",
+    issuer: "Cisco",
+    credlyUrl:
+      "https://www.credly.com/badges/59f6ad13-d89f-4c16-bdf0-2002804bc484",
+  },
+  {
+    id: "cert-certiport-netsec",
+    kind: "certification",
+    year: 2023,
+    month: 5,
+    title: "IT Specialist — Network Security",
+    issuer: "Certiport",
+    credlyUrl:
+      "https://www.credly.com/badges/724ea05e-dd9e-448f-bb95-e666ea0ce69a",
+  },
+  {
+    id: "cert-certiport-cyber",
+    kind: "certification",
+    year: 2023,
+    month: 5,
+    title: "IT Specialist — Cybersecurity",
+    issuer: "Certiport",
+    credlyUrl:
+      "https://www.credly.com/badges/fd351437-5e4f-4941-bc24-9fdc37402bff",
+  },
+  {
+    id: "cert-certiport-network",
+    kind: "certification",
+    year: 2023,
+    month: 4,
+    title: "IT Specialist — Networking",
+    issuer: "Certiport",
+    credlyUrl:
+      "https://www.credly.com/badges/283618b3-1a4a-4371-a417-3b40acb0f044",
+  },
+];

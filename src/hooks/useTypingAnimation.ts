@@ -9,10 +9,6 @@ const phrases = [
   "> nmap -sS -T4 localhost",
   "> python3 train.py --epochs 100",
   "> grep -r 'TODO' src/",
-  "> plays piano since age 5",
-  "> speaks hindi",
-  "> certified to 18 meters depth",
-  "> nvim btw",
 ];
 
 export function useTypingAnimation(speed = 45, pauseMs = 2000, deleteSpeed = 25) {

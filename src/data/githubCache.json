@@ -724,5 +724,17 @@
     "fork": false,
     "archived": false,
     "topics": []
+  },
+  {
+    "name": "aa-crew-sequence-weather-risk",
+    "description": "EPPS-American Airlines Data Challenge: Identifying pilot flight sequences through DFW most vulnerable to weather-driven cascading delays. XGBoost model (AUC-ROC 0.81) + 1,220 avoid recommendations + interactive Streamlit dashboard.",
+    "created_at": "2026-04-14T02:18:56Z",
+    "pushed_at": "2026-04-14T02:20:00Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/aa-crew-sequence-weather-risk",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
   }
 ]

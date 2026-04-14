@@ -6,12 +6,12 @@ import CommandPalette from "@/components/CommandPalette";
 import Footer from "@/components/Footer";
 import StatusBar from "@/components/StatusBar";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
-import { getProjectsByYear } from "@/lib/githubData";
+import { getEntriesByYear } from "@/lib/githubData";
 
 const Index = () => {
   const { crtMode, toggleCrt } = useKonamiCode();
   const [isCommandOpen, setIsCommandOpen] = useState(false);
-  const projectsByYear = getProjectsByYear();
+  const entriesByYear = getEntriesByYear();
 
   // Keyboard shortcut for Cmd+K / Ctrl+/ — toggle command palette
   useEffect(() => {
@@ -38,7 +38,7 @@ const Index = () => {
   }, [crtMode]);
 
   // Convert Map to sorted array (descending year)
-  const years = Array.from(projectsByYear.keys()).sort((a, b) => b - a);
+  const years = Array.from(entriesByYear.keys()).sort((a, b) => b - a);
 
   return (
     <>
@@ -59,7 +59,7 @@ const Index = () => {
             <YearSection
               key={year}
               year={year}
-              projects={projectsByYear.get(year) || []}
+              entries={entriesByYear.get(year) || []}
             />
           ))}
         </div>

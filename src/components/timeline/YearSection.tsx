@@ -1,17 +1,31 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import type { Project } from "@/lib/githubData";
+import type {
+  TimelineEntry,
+  ProjectEntry,
+  ExperienceEntry,
+  PublicationEntry,
+  AwardEntry,
+  CertificationEntry,
+  IsefEntry,
+} from "@/lib/githubData";
+import { getFeaturedEntry } from "@/lib/githubData";
 import FeaturedCard from "./FeaturedCard";
 import ProjectCard from "./ProjectCard";
+import ExperienceCard from "./ExperienceCard";
+import PublicationCard from "./PublicationCard";
+import AwardCard from "./AwardCard";
+import CertificationCard from "./CertificationCard";
+import IsefCard from "./IsefCard";
 import LivePreview from "./LivePreview";
 
 type YearSectionProps = {
   year: number;
-  projects: Project[];
+  entries: TimelineEntry[];
 };
 
-/** Returns the top 4 most-common tech stack tags across all projects. */
-function getTopTechTags(projects: Project[]): string[] {
+/** Returns the top 4 most-common tech stack tags across projects only. */
+function getTopTechTags(projects: ProjectEntry[]): string[] {
   const counts = new Map<string, number>();
   for (const p of projects) {
     for (const tech of p.techStack) {
@@ -24,11 +38,38 @@ function getTopTechTags(projects: Project[]): string[] {
     .map(([tag]) => tag);
 }
 
-const YearSection = ({ year, projects }: YearSectionProps) => {
+const YearSection = ({ year, entries }: YearSectionProps) => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const featured = projects.find((p) => p.featured);
-  const rest = featured ? projects.filter((p) => p.id !== featured.id) : projects;
+  // Split entries by kind using type narrowing
+  const projects = entries.filter(
+    (e): e is ProjectEntry => e.kind === "project",
+  );
+  const experiences = entries.filter(
+    (e): e is ExperienceEntry => e.kind === "experience",
+  );
+  const publications = entries.filter(
+    (e): e is PublicationEntry => e.kind === "publication",
+  );
+  const awards = entries.filter((e): e is AwardEntry => e.kind === "award");
+  const certifications = entries.filter(
+    (e): e is CertificationEntry => e.kind === "certification",
+  );
+
+  // Featured entry for the year (cross-kind). May be an ISEF, a project,
+  // or a publication depending on what is marked featured.
+  const featured = getFeaturedEntry(year);
+
+  // Non-featured projects (shown in the grid)
+  const nonFeaturedProjects = featured
+    ? projects.filter((p) => p.id !== featured.id)
+    : projects;
+
+  // Non-featured publications (shown in the vertical stack)
+  const nonFeaturedPublications = featured
+    ? publications.filter((p) => p.id !== featured.id)
+    : publications;
+
   const topTags = getTopTechTags(projects);
 
   const gridClass =
@@ -36,12 +77,19 @@ const YearSection = ({ year, projects }: YearSectionProps) => {
       ? "grid grid-cols-1 md:grid-cols-2 gap-4"
       : "grid grid-cols-1 md:grid-cols-3 gap-3.5";
 
-  const handleCardClick = (project: Project) => {
+  const handleProjectClick = (project: ProjectEntry) => {
     if (!project.liveUrl) return;
     setExpandedId((current) => (current === project.id ? null : project.id));
   };
 
-  const expandedGridProject = rest.find((p) => p.id === expandedId);
+  const expandedGridProject = nonFeaturedProjects.find(
+    (p) => p.id === expandedId,
+  );
+
+  const featuredProjectLive =
+    featured?.kind === "project" ? featured : undefined;
+
+  const awardsAndCerts = [...awards, ...certifications];
 
   return (
     <>
@@ -63,33 +111,63 @@ const YearSection = ({ year, projects }: YearSectionProps) => {
           </div>
         </div>
 
-        {/* Featured card */}
+        {/* Featured entry — routed by kind */}
         {featured && (
           <>
-            <FeaturedCard
-              project={featured}
-              onClick={() => handleCardClick(featured)}
-            />
-            <AnimatePresence initial={false}>
-              {expandedId === featured.id && (
-                <LivePreview
-                  key={featured.id}
-                  project={featured}
-                  onClose={() => setExpandedId(null)}
+            {featured.kind === "isef" && (
+              <IsefCard entry={featured as IsefEntry} />
+            )}
+            {featured.kind === "project" && (
+              <>
+                <FeaturedCard
+                  project={featured as ProjectEntry}
+                  onClick={() => handleProjectClick(featured as ProjectEntry)}
                 />
-              )}
-            </AnimatePresence>
+                <AnimatePresence initial={false}>
+                  {expandedId === featured.id && featuredProjectLive && (
+                    <LivePreview
+                      key={featured.id}
+                      project={featuredProjectLive}
+                      onClose={() => setExpandedId(null)}
+                    />
+                  )}
+                </AnimatePresence>
+              </>
+            )}
+            {featured.kind === "publication" && (
+              <div className="mb-5">
+                <PublicationCard entry={featured as PublicationEntry} />
+              </div>
+            )}
           </>
         )}
 
-        {/* Grid of regular cards */}
-        {rest.length > 0 && (
+        {/* Publications (non-featured) — vertical stack */}
+        {nonFeaturedPublications.length > 0 && (
+          <div className="mb-5 flex flex-col gap-3">
+            {nonFeaturedPublications.map((pub) => (
+              <PublicationCard key={pub.id} entry={pub} />
+            ))}
+          </div>
+        )}
+
+        {/* Experience — vertical stack */}
+        {experiences.length > 0 && (
+          <div className="mb-5 flex flex-col gap-3">
+            {experiences.map((exp) => (
+              <ExperienceCard key={exp.id} entry={exp} />
+            ))}
+          </div>
+        )}
+
+        {/* Grid of regular project cards */}
+        {nonFeaturedProjects.length > 0 && (
           <div className={gridClass}>
-            {rest.map((project) => (
+            {nonFeaturedProjects.map((project) => (
               <ProjectCard
                 key={project.id}
                 project={project}
-                onClick={() => handleCardClick(project)}
+                onClick={() => handleProjectClick(project)}
               />
             ))}
           </div>
@@ -105,6 +183,18 @@ const YearSection = ({ year, projects }: YearSectionProps) => {
             />
           )}
         </AnimatePresence>
+
+        {/* Awards + certifications combined row */}
+        {awardsAndCerts.length > 0 && (
+          <div className="mt-5 flex flex-wrap gap-2">
+            {awards.map((award) => (
+              <AwardCard key={award.id} entry={award} />
+            ))}
+            {certifications.map((cert) => (
+              <CertificationCard key={cert.id} entry={cert} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Year divider */}
