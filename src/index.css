@@ -148,6 +148,68 @@
   animation: commit-push 0.6s ease-out;
 }
 
+/* Fixed scanlines across entire page */
+.scanlines-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(62, 207, 142, 0.025) 2px,
+    rgba(62, 207, 142, 0.025) 4px
+  );
+}
+
+/* CRT vignette across entire page */
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.5));
+}
+
+/* Hero background gradient */
+.hero-canvas-bg {
+  background: radial-gradient(ellipse at 50% 50%, rgba(20, 65, 42, 0.15) 0%, #000 65%);
+}
+
+/* Gradient transition between hero and timeline */
+.hero-to-timeline-fade {
+  position: relative;
+  z-index: 2;
+  height: 120px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.75) 60%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+}
+
+/* Timeline wrapper — semi-transparent so canvas shows through */
+.timeline-wrapper {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.88);
+  padding-bottom: 0;
+}
+
+/* Timeline container — max-width, padding */
+.timeline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+@media (min-width: 768px) {
+  .timeline-container {
+    padding: 0 48px;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

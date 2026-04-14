@@ -1,80 +1,728 @@
-{
-  "intellispend": [
-    {
-      "sha": "e3867092c79587dbf02766de48fb6cc5bc6d96dd",
-      "repo": "drPod/Intellispend"
-    }
-  ],
-  "fucknetflix": [
-    {
-      "sha": "dab0f4c3a7fb05a29e54c57b5d54c5d23684089e",
-      "repo": "drPod/fucknetflix"
-    }
-  ],
-  "phantom": [
-    {
-      "sha": "30f816762a7400423ce0163ecb4bf2abe593cb8e",
-      "repo": "drPod/Phantom"
-    }
-  ],
-  "mcp-contrib": [
-    {
-      "sha": "07470d6f2e303c0431e99679941120cb842e8fa1",
-      "repo": "drPod/mcp-google-sheets"
-    },
-    {
-      "sha": "6746f872e8c26ec4f404a2af7a5dc897603d541d",
-      "repo": "drPod/mcp-ical"
-    },
-    {
-      "sha": "4d55fad4f7af178ec5ee544f2ca03a9f17e52077",
-      "repo": "drPod/drawio-mcp-extension"
-    }
-  ],
-  "this-portfolio": [
-    {
-      "sha": "db2103759c346be731e8525dda83fd7875c40ddd",
-      "repo": "drPod/timeline-coder"
-    }
-  ],
-  "cyberpatriot-scripts": [
-    {
-      "sha": "0fbb80ba234b72199abebc0c9e8b0890ae3894e0",
-      "repo": "drPod/CyberPatriot-Scripts"
-    }
-  ],
-  "community-corner": [
-    {
-      "sha": "7a14289bb74e98b9e8114b5f58c188207be26009",
-      "repo": "drPod/Community-Corner-Web"
-    }
-  ],
-  "research-repos": [
-    {
-      "sha": "1d07446c9d9bfcba0d41c5c69fe312a2e23c1d5d",
-      "repo": "drPod/Blame-Data"
-    },
-    {
-      "sha": "13a29919151b6e36338ede4f65ab0722f0bee607",
-      "repo": "drPod/Detecting-Malicious-Commits"
-    }
-  ],
-  "learnx": [
-    {
-      "sha": "7f0cbdf0013979fd6ebf8834059e25556f17fe2b",
-      "repo": "jeff-k-zhou/LearnX"
-    }
-  ],
-  "ccdc-script": [
-    {
-      "sha": "dadf40af681be46ad114cf5337b5f450d6516747",
-      "repo": "drPod/CCDC-Website-Integrity-Script-10-25-2025"
-    }
-  ],
-  "acdec-quiz": [
-    {
-      "sha": "f7586280c41833d926b795eaf5046cf7af68fc11",
-      "repo": "drPod/Academic-Decathlon-Focus-Quiz-Automation"
-    }
-  ]
-}
+[
+  {
+    "name": "GPT-Learning-Project",
+    "description": "The purpose of this project is to provide a comprehensive resource for individuals who want to learn more about GPT models and their applications in natural language processing. By gaining a deeper understanding of these models, individuals can leverage their potential upsides while being aware of their potential downsides.",
+    "created_at": "2023-04-09T00:46:20Z",
+    "pushed_at": "2023-04-15T00:02:48Z",
+    "language": "JavaScript",
+    "html_url": "https://github.com/drPod/GPT-Learning-Project",
+    "homepage": "",
+    "fork": false,
+    "archived": false,
+    "topics": [
+      "gpt",
+      "openai-api"
+    ]
+  },
+  {
+    "name": "Cutting-Edge-Website",
+    "description": "Lawn Mowing Website",
+    "created_at": "2023-07-07T03:25:41Z",
+    "pushed_at": "2023-07-07T03:36:43Z",
+    "language": "JavaScript",
+    "html_url": "https://github.com/drPod/Cutting-Edge-Website",
+    "homepage": "https://cutting-edge-website.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Its-The-Little-Things",
+    "description": "Non profit organization reaching to children in orphanages.",
+    "created_at": "2023-07-18T05:45:41Z",
+    "pushed_at": "2023-07-22T01:56:01Z",
+    "language": "CSS",
+    "html_url": "https://github.com/drPod/Its-The-Little-Things",
+    "homepage": "https://its-the-little-things.vercel.app",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Personal-Blog",
+    "description": "Professional writer dedicated to promote cybersecurity awareness in society.",
+    "created_at": "2023-07-26T21:08:07Z",
+    "pushed_at": "2023-10-10T14:32:31Z",
+    "language": "TypeScript",
+    "html_url": "https://github.com/drPod/Personal-Blog",
+    "homepage": "https://cyber-society.tech",
+    "fork": false,
+    "archived": false,
+    "topics": [
+      "cybersecurity",
+      "cybersecurity-awareness"
+    ]
+  },
+  {
+    "name": "CyberPatriot-Scripts",
+    "description": "Welcome to the CyberPatriot Competition Scripts Repository! Here, you'll find custom scripts developed during my CyberPatriot journey. These tools automate tasks, reinforce best practices, and boost system security. Join me to enhance our cybersecurity skills and contribute to a safer online world!",
+    "created_at": "2023-08-01T20:38:19Z",
+    "pushed_at": "2023-11-05T19:43:22Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/CyberPatriot-Scripts",
+    "homepage": "",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "drPod",
+    "description": "About me and some stats",
+    "created_at": "2023-08-01T20:42:31Z",
+    "pushed_at": "2026-04-13T02:33:18Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/drPod",
+    "homepage": "",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "OurLuckyConnect",
+    "description": "This is a language-united community dedicated to connecting students to teen volunteers who teach spoken English while honing their native language skills.",
+    "created_at": "2023-08-07T00:47:41Z",
+    "pushed_at": "2024-04-03T01:14:01Z",
+    "language": "HTML",
+    "html_url": "https://github.com/drPod/OurLuckyConnect",
+    "homepage": "https://our-lucky-connect.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Java-Learning",
+    "description": "Welcome to the Java Learning repository! This repository documents my exciting and educational voyage into the world of Java programming. As a beginner, I am embarking on a quest to master the art of Java development, and this repository serves as a chronicle of my progress, insights, challenges, and triumphs.",
+    "created_at": "2023-08-10T00:32:42Z",
+    "pushed_at": "2024-06-14T22:16:59Z",
+    "language": "Java",
+    "html_url": "https://github.com/drPod/Java-Learning",
+    "homepage": "",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Homebowls",
+    "description": null,
+    "created_at": "2023-09-16T16:36:10Z",
+    "pushed_at": "2023-11-24T21:54:09Z",
+    "language": "HTML",
+    "html_url": "https://github.com/drPod/Homebowls",
+    "homepage": "https://homebowls.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Community-Corner-App",
+    "description": null,
+    "created_at": "2023-10-23T00:24:53Z",
+    "pushed_at": "2023-10-27T12:49:07Z",
+    "language": "JavaScript",
+    "html_url": "https://github.com/drPod/Community-Corner-App",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Community-Corner-Web",
+    "description": null,
+    "created_at": "2023-10-27T12:44:41Z",
+    "pushed_at": "2024-10-18T19:56:17Z",
+    "language": "JavaScript",
+    "html_url": "https://github.com/drPod/Community-Corner-Web",
+    "homepage": "https://community-corner-web.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Intellispend",
+    "description": "Intellispend is a budgeting app designed to help users gain control of their finances. This app utilizes the Plaid API to retrieve and categorize expenses, making it easier for users to track their spending and make informed financial decisions.",
+    "created_at": "2023-10-31T05:40:28Z",
+    "pushed_at": "2023-10-31T06:00:35Z",
+    "language": "TypeScript",
+    "html_url": "https://github.com/drPod/Intellispend",
+    "homepage": "https://intellispend.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "GradeHub-ClassDB",
+    "description": "GradeHub is a platform designed to provide an improved user interface and user experience for viewing your grades, as compared to the school's original Home Access Center (HAC).",
+    "created_at": "2023-11-06T20:35:34Z",
+    "pushed_at": "2023-11-07T05:37:53Z",
+    "language": "TypeScript",
+    "html_url": "https://github.com/drPod/GradeHub-ClassDB",
+    "homepage": "https://gradehubfisd.netlify.app/",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Cryptography",
+    "description": "Explore practical cryptography challenges and solutions from cryptohack.org. From basics to advanced techniques, delve into symmetric, asymmetric, hashing, and mathematical concepts. Join in mastering cryptography through hands-on learning and coding exercises.",
+    "created_at": "2024-03-09T00:12:36Z",
+    "pushed_at": "2024-03-12T02:55:41Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/Cryptography",
+    "homepage": "",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Malicious-Commits",
+    "description": null,
+    "created_at": "2024-06-21T16:04:54Z",
+    "pushed_at": "2024-07-17T15:24:46Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/Malicious-Commits",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Blame-Data",
+    "description": null,
+    "created_at": "2024-07-09T16:56:40Z",
+    "pushed_at": "2024-08-02T18:15:40Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/Blame-Data",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "drPod.github.io",
+    "description": null,
+    "created_at": "2024-10-05T02:16:37Z",
+    "pushed_at": "2024-10-05T02:27:03Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/drPod.github.io",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Academic-Decathlon-Focus-Quiz-Automation",
+    "description": "This project is intended for high school teachers importing DemiDec Focus Quizzes into the Canvas LMS. The project utilizes the Canvas API Python wrapper to automate the process of creating quizzes in Canvas. The project is designed to be run from the command line.",
+    "created_at": "2024-11-25T02:20:06Z",
+    "pushed_at": "2025-05-30T03:58:10Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/Academic-Decathlon-Focus-Quiz-Automation",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Atlantis",
+    "description": null,
+    "created_at": "2024-12-20T21:20:20Z",
+    "pushed_at": "2025-01-15T13:09:48Z",
+    "language": "JavaScript",
+    "html_url": "https://github.com/drPod/Atlantis",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Detecting-Malicious-Commits",
+    "description": null,
+    "created_at": "2025-01-11T08:31:56Z",
+    "pushed_at": "2025-02-15T01:15:55Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/Detecting-Malicious-Commits",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "AP-Stat-Project",
+    "description": null,
+    "created_at": "2025-02-19T15:59:49Z",
+    "pushed_at": "2025-02-19T16:31:42Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/AP-Stat-Project",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "waf.cs.illinois.edu",
+    "description": null,
+    "created_at": "2025-03-28T20:21:28Z",
+    "pushed_at": "2025-02-04T20:41:29Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/waf.cs.illinois.edu",
+    "homepage": null,
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "WhereToSellPOS",
+    "description": null,
+    "created_at": "2025-06-05T12:22:41Z",
+    "pushed_at": "2025-10-11T22:45:09Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/WhereToSellPOS",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "UrbanPiper-AI-Tagging",
+    "description": null,
+    "created_at": "2025-07-17T21:30:33Z",
+    "pushed_at": "2025-07-29T05:43:30Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/UrbanPiper-AI-Tagging",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "UrbanPiper-AI-Checking",
+    "description": null,
+    "created_at": "2025-07-29T06:58:41Z",
+    "pushed_at": "2025-07-29T07:02:25Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/UrbanPiper-AI-Checking",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Courses-Visualization",
+    "description": null,
+    "created_at": "2025-10-06T04:06:40Z",
+    "pushed_at": "2025-10-06T04:07:02Z",
+    "language": "HTML",
+    "html_url": "https://github.com/drPod/Courses-Visualization",
+    "homepage": "https://courses-visualization.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "UrbanPiper-Periscope",
+    "description": null,
+    "created_at": "2025-10-11T23:06:28Z",
+    "pushed_at": "2025-10-11T23:07:21Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/UrbanPiper-Periscope",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "CCDC-Website-Integrity-Script-10-25-2025",
+    "description": null,
+    "created_at": "2025-10-25T19:52:39Z",
+    "pushed_at": "2025-10-25T22:18:57Z",
+    "language": "PowerShell",
+    "html_url": "https://github.com/drPod/CCDC-Website-Integrity-Script-10-25-2025",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "mp4-to-txt",
+    "description": "Transcribe videos stored in filesystem",
+    "created_at": "2025-11-25T08:40:40Z",
+    "pushed_at": "2025-11-25T08:57:25Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/mp4-to-txt",
+    "homepage": "",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Transfer-Bench",
+    "description": null,
+    "created_at": "2025-11-29T06:29:23Z",
+    "pushed_at": "2025-11-29T06:29:55Z",
+    "language": "Jupyter Notebook",
+    "html_url": "https://github.com/drPod/Transfer-Bench",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "mcp-google-sheets",
+    "description": "This MCP server integrates with your Google Drive and Google Sheets, to enable creating and modifying spreadsheets.",
+    "created_at": "2025-12-02T22:38:16Z",
+    "pushed_at": "2025-12-02T22:49:37Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/mcp-google-sheets",
+    "homepage": "",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "uiuc-food-waste-awareness",
+    "description": "Single-page website for UIUC students about reducing food waste in dining halls. Fully responsive, accessible, and modern.",
+    "created_at": "2025-12-07T00:57:25Z",
+    "pushed_at": "2025-12-07T01:10:50Z",
+    "language": "CSS",
+    "html_url": "https://github.com/drPod/uiuc-food-waste-awareness",
+    "homepage": "https://uiuc-food-waste-awareness.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "stat107-project2",
+    "description": "STAT 107 Project 2: Jailbreak Dataset Analysis - Unified jailbreak benchmark dataset analysis with 945K records",
+    "created_at": "2025-12-09T09:07:38Z",
+    "pushed_at": "2025-12-09T09:08:07Z",
+    "language": "Jupyter Notebook",
+    "html_url": "https://github.com/drPod/stat107-project2",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "jailbreak-dataset-analysis",
+    "description": "Unified jailbreak benchmark dataset analysis with 945K records from multiple sources",
+    "created_at": "2025-12-09T09:32:53Z",
+    "pushed_at": "2025-12-09T09:33:16Z",
+    "language": "Jupyter Notebook",
+    "html_url": "https://github.com/drPod/jailbreak-dataset-analysis",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "drawio-mcp-extension",
+    "description": "Draw.io Model Context Protocol (MCP) Browser Extension",
+    "created_at": "2025-12-10T10:03:14Z",
+    "pushed_at": "2025-12-10T23:26:02Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/drawio-mcp-extension",
+    "homepage": null,
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "phd-application-tracker",
+    "description": "A Next.js application for tracking PhD program applications",
+    "created_at": "2025-12-23T04:06:03Z",
+    "pushed_at": "2025-12-23T08:22:20Z",
+    "language": "TypeScript",
+    "html_url": "https://github.com/drPod/phd-application-tracker",
+    "homepage": "https://phd-application-tracker-beta.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "cafe-website",
+    "description": "Zuccaro Café - Costa Rican Coffee Excellence Website",
+    "created_at": "2025-12-25T18:35:19Z",
+    "pushed_at": "2025-12-25T18:42:26Z",
+    "language": "HTML",
+    "html_url": "https://github.com/drPod/cafe-website",
+    "homepage": "https://cafe-website-olive.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "FuckNetflix",
+    "description": "Electron app for streaming and downloading torrents. Paste a magnet link or search for movies/shows, play with bundled mpv, manage downloads, and get AI-assisted torrent selection via an optional local LLM",
+    "created_at": "2026-02-13T00:10:19Z",
+    "pushed_at": "2026-02-13T00:12:06Z",
+    "language": "JavaScript",
+    "html_url": "https://github.com/drPod/FuckNetflix",
+    "homepage": "",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "mcp-ical",
+    "description": "A Model Context Protocol Server that allows you to interact with your MacOS Calendar through natural language.",
+    "created_at": "2026-02-17T04:56:18Z",
+    "pushed_at": "2026-02-17T05:06:03Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/mcp-ical",
+    "homepage": "",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Phantom",
+    "description": "Autonomous OSINT platform that maps a target's digital footprint from a username, email, phone, domain, or wallet. Claude-powered planner-analyst loop drives parallel resolvers across 600+ sources, with GPU post-processing and a live D3 graph frontend",
+    "created_at": "2026-03-01T11:21:42Z",
+    "pushed_at": "2026-03-03T03:02:03Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/Phantom",
+    "homepage": "",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "timeline-coder",
+    "description": null,
+    "created_at": "2026-03-08T01:58:10Z",
+    "pushed_at": "2026-03-08T21:08:20Z",
+    "language": "TypeScript",
+    "html_url": "https://github.com/drPod/timeline-coder",
+    "homepage": "https://timeline-coder.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "respan-mcp",
+    "description": null,
+    "created_at": "2026-03-08T09:08:35Z",
+    "pushed_at": "2026-03-08T10:32:42Z",
+    "language": "TypeScript",
+    "html_url": "https://github.com/drPod/respan-mcp",
+    "homepage": "https://keywordsai-mcp.vercel.app",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "CalClaude",
+    "description": null,
+    "created_at": "2026-03-10T20:24:35Z",
+    "pushed_at": "2026-03-20T10:12:49Z",
+    "language": "Swift",
+    "html_url": "https://github.com/drPod/CalClaude",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "respan",
+    "description": null,
+    "created_at": "2026-03-20T13:59:50Z",
+    "pushed_at": "2026-03-22T17:58:07Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/respan",
+    "homepage": null,
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "respan-tools",
+    "description": null,
+    "created_at": "2026-03-21T08:29:11Z",
+    "pushed_at": "2026-03-23T00:22:12Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/respan-tools",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "gemini-cli",
+    "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
+    "created_at": "2026-03-22T23:07:38Z",
+    "pushed_at": "2026-03-22T22:43:14Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/gemini-cli",
+    "homepage": "https://geminicli.com",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "ai",
+    "description": "The AI Toolkit for TypeScript. From the creators of Next.js, the AI SDK is a free open-source library for building AI-powered applications and agents ",
+    "created_at": "2026-03-23T03:00:19Z",
+    "pushed_at": "2026-03-23T03:37:15Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/ai",
+    "homepage": "https://ai-sdk.dev",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "haystack-integrations",
+    "description": "🚀 A list of Haystack Integrations, maintained by the community or deepset. ",
+    "created_at": "2026-03-23T03:24:31Z",
+    "pushed_at": "2026-03-23T03:41:19Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/haystack-integrations",
+    "homepage": "https://haystack.deepset.ai/integrations",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "mastra",
+    "description": "From the team behind Gatsby, Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+    "created_at": "2026-03-23T04:38:56Z",
+    "pushed_at": "2026-03-23T05:30:33Z",
+    "language": "TypeScript",
+    "html_url": "https://github.com/drPod/mastra",
+    "homepage": "https://mastra.ai",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "docs",
+    "description": "Docs for Agno: build multi-agent systems that learn.",
+    "created_at": "2026-03-23T05:11:54Z",
+    "pushed_at": "2026-03-23T05:23:41Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/docs",
+    "homepage": "",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "pydantic-ai",
+    "description": "GenAI Agent Framework, the Pydantic way",
+    "created_at": "2026-03-24T02:54:45Z",
+    "pushed_at": "2026-04-06T21:14:51Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/pydantic-ai",
+    "homepage": "https://ai.pydantic.dev",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "baml",
+    "description": "The AI framework that adds the engineering to prompt engineering (Python/TS/Ruby/Java/C#/Rust/Go compatible)",
+    "created_at": "2026-03-24T03:02:08Z",
+    "pushed_at": "2026-03-24T03:08:40Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/baml",
+    "homepage": "https://docs.boundaryml.com",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "llama_index",
+    "description": "LlamaIndex is the leading document agent and OCR platform",
+    "created_at": "2026-03-24T03:49:50Z",
+    "pushed_at": "2026-03-24T03:55:15Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/llama_index",
+    "homepage": "https://developers.llamaindex.ai",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "ruby_llm",
+    "description": "One beautiful Ruby API for OpenAI, Anthropic, Gemini, Bedrock, Azure, OpenRouter, DeepSeek, Ollama, VertexAI, Perplexity, Mistral, xAI, GPUStack & OpenAI compatible APIs. Agents, Chat, Vision, Audio, PDF, Images, Embeddings, Tools, Streaming & Rails integration.",
+    "created_at": "2026-03-24T04:14:42Z",
+    "pushed_at": "2026-03-24T04:29:01Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/ruby_llm",
+    "homepage": "https://rubyllm.com/",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "litellm",
+    "description": "Python SDK, Proxy Server (AI Gateway) to call 100+ LLM APIs in OpenAI (or native) format, with cost tracking, guardrails, loadbalancing and logging. [Bedrock, Azure, OpenAI, VertexAI, Cohere, Anthropic, Sagemaker, HuggingFace, VLLM, NVIDIA NIM]",
+    "created_at": "2026-03-24T04:24:31Z",
+    "pushed_at": "2026-03-24T05:35:48Z",
+    "language": null,
+    "html_url": "https://github.com/drPod/litellm",
+    "homepage": "https://docs.litellm.ai/docs/",
+    "fork": true,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "coldshot",
+    "description": "Terminal-based agentic CRM for B2B cold outreach",
+    "created_at": "2026-03-26T06:54:18Z",
+    "pushed_at": "2026-03-28T07:41:31Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/coldshot",
+    "homepage": "",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "Canopy",
+    "description": "View Claude conversation trees with all branches",
+    "created_at": "2026-04-02T13:20:24Z",
+    "pushed_at": "2026-04-02T19:46:35Z",
+    "language": "HTML",
+    "html_url": "https://github.com/drPod/Canopy",
+    "homepage": "https://canopy-chat.vercel.app/",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "chainviz",
+    "description": null,
+    "created_at": "2026-04-05T14:05:14Z",
+    "pushed_at": "2026-04-06T11:59:11Z",
+    "language": "HTML",
+    "html_url": "https://github.com/drPod/chainviz",
+    "homepage": "https://supply-chain-frontend-nu.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "tracelight",
+    "description": null,
+    "created_at": "2026-04-05T14:08:09Z",
+    "pushed_at": "2026-04-11T07:39:17Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/tracelight",
+    "homepage": "https://icij-offshore-leaks.vercel.app",
+    "fork": false,
+    "archived": false,
+    "topics": []
+  },
+  {
+    "name": "ghostroom",
+    "description": "A live AI escape room — teams write SKILL.md prompts and watch a local Qwen 2.5 7B operate a Linux desktop via noVNC to solve filesystem puzzles. One Modal container per team.",
+    "created_at": "2026-04-09T22:40:56Z",
+    "pushed_at": "2026-04-09T23:30:50Z",
+    "language": "Python",
+    "html_url": "https://github.com/drPod/ghostroom",
+    "homepage": null,
+    "fork": false,
+    "archived": false,
+    "topics": []
+  }
+]

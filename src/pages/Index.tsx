@@ -1,53 +1,80 @@
 import { useState, useEffect } from "react";
-import Hero from "@/components/Hero";
-import Timeline from "@/components/Timeline";
-import StatsCounter from "@/components/StatsCounter";
-import Footer from "@/components/Footer";
+import BinaryCanvas from "@/components/canvas/BinaryCanvas";
+import HeroOverlay from "@/components/canvas/HeroOverlay";
+import YearSection from "@/components/timeline/YearSection";
 import CommandPalette from "@/components/CommandPalette";
+import Footer from "@/components/Footer";
+import StatusBar from "@/components/StatusBar";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
+import { getProjectsByYear } from "@/lib/githubData";
 
 const Index = () => {
   const { crtMode, toggleCrt } = useKonamiCode();
-  const [commandOpen, setCommandOpen] = useState(false);
+  const [isCommandOpen, setIsCommandOpen] = useState(false);
+  const projectsByYear = getProjectsByYear();
 
-  // Ctrl+/ (or Cmd+/) to open command palette
+  // Keyboard shortcut for Cmd+K / Ctrl+/ — toggle command palette
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === "/") {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "/")) {
         e.preventDefault();
-        setCommandOpen((open) => !open);
+        setIsCommandOpen((o) => !o);
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
   }, []);
 
+  // Toggle CRT mode class on body
+  useEffect(() => {
+    if (crtMode) {
+      document.body.classList.add("crt-mode");
+    } else {
+      document.body.classList.remove("crt-mode");
+    }
+    return () => {
+      document.body.classList.remove("crt-mode");
+    };
+  }, [crtMode]);
+
+  // Convert Map to sorted array (descending year)
+  const years = Array.from(projectsByYear.keys()).sort((a, b) => b - a);
+
   return (
-    <div className={`min-h-screen bg-background transition-all duration-500 ${crtMode ? "crt-mode" : ""}`}>
-      <Hero />
-      <StatsCounter />
-      <Timeline />
+    <>
+      <BinaryCanvas />
+      <div className="scanlines-overlay" />
+      <div className="vignette-overlay" />
+
+      {/* Hero section — canvas is fixed, this is the overlay content */}
+      <HeroOverlay />
+
+      {/* Gradient transition from transparent to timeline background */}
+      <div className="hero-to-timeline-fade" />
+
+      {/* Timeline section */}
+      <div className="timeline-wrapper">
+        <div className="timeline-container">
+          {years.map((year) => (
+            <YearSection
+              key={year}
+              year={year}
+              projects={projectsByYear.get(year) || []}
+            />
+          ))}
+        </div>
+      </div>
+
       <Footer />
 
       <CommandPalette
-        open={commandOpen}
-        onOpenChange={setCommandOpen}
+        open={isCommandOpen}
+        onOpenChange={setIsCommandOpen}
         onToggleCrt={toggleCrt}
       />
 
-      {crtMode && (
-        <div className="pointer-events-none fixed inset-0 z-50">
-          <div
-            className="absolute inset-0 opacity-[0.08]"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(142 70% 45% / 0.3) 2px, hsl(142 70% 45% / 0.3) 4px)",
-            }}
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,hsl(0_0%_0%/0.6))]" />
-        </div>
-      )}
-    </div>
+      <StatusBar />
+    </>
   );
 };
 

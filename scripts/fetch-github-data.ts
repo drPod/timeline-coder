@@ -1,23 +1,16 @@
 /**
- * Fetches latest commit SHAs from GitHub for each repo in repoConfig.
- * Writes results to src/data/githubCache.json.
+ * Fetches ALL public repos for GitHub user drPod with full metadata.
+ * Writes results to src/data/githubCache.json as an array of repo objects.
  *
  * Usage: bun run scripts/fetch-github-data.ts
  * Set GITHUB_TOKEN env var for higher rate limits.
  */
 
-import { repoConfig } from "../src/data/repoConfig";
 import { writeFileSync } from "fs";
 import { resolve } from "path";
 
-type RepoCacheEntry = {
-  sha: string;
-  repo: string;
-};
-
-type GitHubCache = Record<string, RepoCacheEntry[]>;
-
 const GITHUB_API = "https://api.github.com";
+const GITHUB_USER = "drPod";
 const token = process.env.GITHUB_TOKEN;
 
 const headers: Record<string, string> = {
@@ -28,50 +21,68 @@ if (token) {
   headers.Authorization = `Bearer ${token}`;
 }
 
-async function fetchLatestCommit(ownerRepo: string): Promise<{ sha: string } | null> {
-  const url = `${GITHUB_API}/repos/${ownerRepo}/commits?per_page=1`;
-  try {
+type GitHubRepo = {
+  name: string;
+  description: string | null;
+  created_at: string;
+  pushed_at: string;
+  language: string | null;
+  html_url: string;
+  homepage: string | null;
+  fork: boolean;
+  archived: boolean;
+  topics: string[];
+};
+
+async function fetchAllRepos(): Promise<GitHubRepo[]> {
+  const allRepos: GitHubRepo[] = [];
+  let page = 1;
+
+  while (true) {
+    const url = `${GITHUB_API}/users/${GITHUB_USER}/repos?per_page=100&sort=created&direction=asc&page=${page}`;
+    console.log(`  Fetching page ${page}...`);
+
     const res = await fetch(url, { headers });
     if (!res.ok) {
-      console.warn(`  ⚠ ${ownerRepo}: ${res.status} ${res.statusText}`);
-      return null;
+      throw new Error(`GitHub API error: ${res.status} ${res.statusText}`);
     }
+
     const data = await res.json();
-    if (!Array.isArray(data) || data.length === 0) return null;
-    return { sha: data[0].sha as string };
-  } catch (err) {
-    console.warn(`  ⚠ ${ownerRepo}: ${(err as Error).message}`);
-    return null;
+    if (!Array.isArray(data) || data.length === 0) break;
+
+    for (const repo of data) {
+      allRepos.push({
+        name: repo.name,
+        description: repo.description ?? null,
+        created_at: repo.created_at,
+        pushed_at: repo.pushed_at,
+        language: repo.language ?? null,
+        html_url: repo.html_url,
+        homepage: repo.homepage ?? null,
+        fork: repo.fork,
+        archived: repo.archived,
+        topics: repo.topics ?? [],
+      });
+    }
+
+    console.log(`  Got ${data.length} repos (total: ${allRepos.length})`);
+
+    // If we got fewer than 100 results, we've reached the last page
+    if (data.length < 100) break;
+    page++;
   }
+
+  return allRepos;
 }
 
 async function main() {
-  console.log("Fetching GitHub commit data...\n");
+  console.log(`Fetching all public repos for ${GITHUB_USER}...\n`);
 
-  const cache: GitHubCache = {};
-
-  for (const [entryId, mapping] of Object.entries(repoConfig)) {
-    const entries: RepoCacheEntry[] = [];
-
-    for (const repo of mapping.repos) {
-      process.stdout.write(`  ${repo}... `);
-      const result = await fetchLatestCommit(repo);
-      if (result) {
-        entries.push({ sha: result.sha, repo });
-        console.log(result.sha.slice(0, 7));
-      } else {
-        console.log("skipped");
-      }
-    }
-
-    if (entries.length > 0) {
-      cache[entryId] = entries;
-    }
-  }
+  const repos = await fetchAllRepos();
 
   const outPath = resolve(import.meta.dir, "../src/data/githubCache.json");
-  writeFileSync(outPath, JSON.stringify(cache, null, 2) + "\n");
-  console.log(`\nWrote ${Object.keys(cache).length} entries to src/data/githubCache.json`);
+  writeFileSync(outPath, JSON.stringify(repos, null, 2) + "\n");
+  console.log(`\nWrote ${repos.length} repos to src/data/githubCache.json`);
 }
 
 main();
