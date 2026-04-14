@@ -34,7 +34,6 @@ const showcase: ProjectOverride[] = [
       "Pick two world leaders. Watch AI trace the offshore money between them.",
     category: "osint",
     featured: true,
-    year: 2026,
     liveUrl: "https://icij-offshore-leaks.vercel.app",
   },
   {
@@ -42,7 +41,6 @@ const showcase: ProjectOverride[] = [
     pitch: "What happens when one npm package gets compromised?",
     category: "infra",
     featured: true,
-    year: 2026,
     liveUrl: "https://supply-chain-frontend-nu.vercel.app",
   },
   {
@@ -51,7 +49,6 @@ const showcase: ProjectOverride[] = [
       "Live AI escape room. 20 teams, 20 Linux desktops, one local Qwen ghost — best prompt wins.",
     category: "tool",
     featured: true,
-    year: 2026,
   },
   {
     repoName: "coldshot",
@@ -59,7 +56,6 @@ const showcase: ProjectOverride[] = [
       "Terminal agentic CRM. AI discovers prospects, researches pain, writes the email.",
     category: "sales",
     featured: true,
-    year: 2026,
   },
   {
     repoName: "Phantom",
@@ -67,14 +63,12 @@ const showcase: ProjectOverride[] = [
       "Autonomous OSINT platform. One identity in, full digital footprint out.",
     category: "osint",
     featured: true,
-    year: 2025,
   },
   {
     repoName: "FuckNetflix",
     pitch: "Open source Netflix for free. No subscriptions, no DRM.",
     category: "media",
     featured: true,
-    year: 2025,
   },
   {
     repoName: "Detecting-Malicious-Commits",
@@ -95,21 +89,18 @@ const include: ProjectOverride[] = [
       "Every UIUC engineering prereq as one interactive graph. 500+ courses, 13 majors, the hub classes exposed.",
     category: "tool",
     liveUrl: "https://courses-visualization.vercel.app",
-    year: 2025,
   },
   {
     repoName: "Transfer-Bench",
     pitch:
       "Does a jailbreak in English still work in Spanish? In Chinese? Benchmark says yes.",
     category: "research",
-    year: 2025,
   },
   {
     repoName: "jailbreak-dataset-analysis",
     pitch:
       "Unified 945K jailbreak attempts across HackAPrompt, JailbreakBench, WildJailbreak, and XSTest into one dataset.",
     category: "research",
-    year: 2025,
   },
   {
     repoName: "Canopy",
@@ -117,56 +108,48 @@ const include: ProjectOverride[] = [
       "Claude conversations are trees, not threads. See every branch, every edit, every alternate response.",
     category: "tool",
     liveUrl: "https://canopy-chat.vercel.app",
-    year: 2025,
   },
   {
     repoName: "CalClaude",
     pitch:
       "Cmd+Opt+P from anywhere. Describe the event in English, screenshot optional. Claude files it on your calendar.",
     category: "tool",
-    year: 2025,
   },
   {
     repoName: "UrbanPiper-Periscope",
     pitch:
       "Restaurant went dark on DoorDash at 7pm. This figures out how much revenue that cost — during business hours only.",
     category: "sales",
-    year: 2025,
   },
   {
     repoName: "UrbanPiper-AI-Tagging",
     pitch:
       "Every restaurant phone call tagged by AI. Owners see which calls went wrong without listening to any of them.",
     category: "sales",
-    year: 2025,
   },
   {
     repoName: "UrbanPiper-AI-Checking",
     pitch:
       "Did the voice AI agent actually take the order right? Pulls every Atlas order and checks against the call.",
     category: "sales",
-    year: 2025,
   },
   {
     repoName: "WhereToSellPOS",
     pitch:
       "Crawled every restaurant within 30km of Dallas via Google Maps. Every review, every rating, ready to mine.",
     category: "sales",
-    year: 2025,
   },
   {
     repoName: "Academic-Decathlon-Focus-Quiz-Automation",
     pitch:
       "Teachers used to copy DemiDec quizzes into Canvas question by question. Drop a PDF, get a quiz.",
     category: "tool",
-    year: 2024,
   },
   {
     repoName: "CCDC-Website-Integrity-Script-10-25-2025",
     pitch:
       "SHA-256 every file on the web server. Immutable bit, syslog alerts, catches defacement in under 5 minutes.",
     category: "security",
-    year: 2025,
   },
   {
     repoName: "Personal-Blog",
@@ -174,7 +157,6 @@ const include: ProjectOverride[] = [
       "Wrote about phishing, password managers, and ransomware for high schoolers. 12,000+ readers.",
     category: "security",
     liveUrl: "https://cybersociety.vercel.app/",
-    year: 2023,
   },
   {
     repoName: "GradeHub-ClassDB",
@@ -182,7 +164,6 @@ const include: ProjectOverride[] = [
       "Home Access Center is ugly. Scrape it, compute real GPAs with subject weightage, make it look good.",
     category: "tool",
     liveUrl: "https://gradehubfisd.netlify.app",
-    year: 2023,
   },
   {
     repoName: "Intellispend",
@@ -190,7 +171,6 @@ const include: ProjectOverride[] = [
       "Plaid into your actual bank. Every transaction categorized, budget caps, one clean dashboard.",
     category: "tool",
     liveUrl: "https://intellispend.vercel.app",
-    year: 2023,
   },
   {
     repoName: "Community-Corner-Web",
@@ -198,14 +178,12 @@ const include: ProjectOverride[] = [
       "Rebuilt a Wix news site as a real React app. Supabase backend, Vercel deploy, zero page builders.",
     category: "tool",
     liveUrl: "https://community-corner-web.vercel.app",
-    year: 2023,
   },
   {
     repoName: "CyberPatriot-Scripts",
     pitch:
       "Six-hour Air Force cyber defense competition. One script hardens Ubuntu, one hardens Windows, fast.",
     category: "security",
-    year: 2023,
   },
   {
     repoName: "OurLuckyConnect",
@@ -213,14 +191,12 @@ const include: ProjectOverride[] = [
       "US high schoolers teach English to underprivileged kids in India. 2,000+ books donated, nonprofit I co-founded.",
     category: "tool",
     liveUrl: "https://our-lucky-connect.vercel.app",
-    year: 2023,
   },
   {
     repoName: "GPT-Learning-Project",
     pitch:
       "First time I touched the OpenAI API. Looped through every engine they had, called Babbage and Davinci.",
     category: "learning",
-    year: 2023,
   },
 ];
 
@@ -231,21 +207,18 @@ const mention: ProjectOverride[] = [
     repoName: "Malicious-Commits",
     pitch: "First take at the SecureComm pipeline. Where it started.",
     category: "research",
-    year: 2024,
   },
   {
     repoName: "Blame-Data",
     pitch:
       "Mined git blame from thousands of vulnerable commits to feed the LSTM.",
     category: "research",
-    year: 2024,
   },
   {
     repoName: "Cryptography",
     pitch:
       "Every CryptoHack and PicoCTF crypto challenge I've solved, worked out in Python.",
     category: "security",
-    year: 2024,
   },
   {
     repoName: "stormchain",
@@ -253,7 +226,6 @@ const mention: ProjectOverride[] = [
       "DFW pilot sequences ranked by weather-cascade risk. XGBoost on 842K flights, 78% more delay minutes caught than baseline.",
     category: "research",
     featured: true,
-    year: 2026,
     liveUrl: "https://stormchain.streamlit.app/",
   },
   {
@@ -261,14 +233,12 @@ const mention: ProjectOverride[] = [
     pitch: "Landing page for a chai and matcha startup aimed at college campuses.",
     category: "tool",
     liveUrl: "https://campuschai-landing-page.vercel.app",
-    year: 2026,
   },
   {
     repoName: "respan-tools",
     pitch:
       "`respan logs list`, `respan traces get`, `respan evaluators run`. Respan observability without leaving the terminal.",
     category: "tool",
-    year: 2026,
   },
   {
     repoName: "uiuc-food-waste-awareness",
@@ -276,14 +246,12 @@ const mention: ProjectOverride[] = [
       "Vanilla HTML, CSS, JS. One page telling UIUC students to stop dumping food trays.",
     category: "tool",
     liveUrl: "https://uiuc-food-waste-awareness.vercel.app",
-    year: 2025,
   },
   {
     repoName: "Community-Corner-App",
     pitch:
       "React Native companion to the Community Corner newsroom. Same content, on your phone.",
     category: "tool",
-    year: 2023,
   },
 ];
 

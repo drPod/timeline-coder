@@ -66,6 +66,59 @@ export const manualEntries: TimelineEntry[] = [
     pitch:
       "Led a team of interns under Prof. Xinda Wang on LSTM-based vulnerability detection. 89% classification accuracy. Two papers accepted at international security conferences.",
   },
+  {
+    id: "exp-statefarm",
+    kind: "experience",
+    year: 2026,
+    month: 5,
+    endYear: 2026,
+    endMonth: 8,
+    company: "State Farm",
+    role: "Information Security Intern",
+    location: "Richardson, TX",
+    pitch:
+      "Summer 2026 information security internship at a Fortune 50 company. Hybrid, $28/hr + $2K stipend.",
+  },
+  {
+    id: "exp-cyber-club",
+    kind: "experience",
+    year: 2021,
+    month: 8,
+    endYear: 2025,
+    endMonth: 5,
+    company: "Cybersecurity Club · Lebanon Trail HS",
+    role: "Founder & President",
+    location: "Frisco, TX",
+    pitch:
+      "Founded the school's cybersecurity club. Scaled to 90+ members, prepped them for CyberPatriot and PicoCTF, spawned the cybersociety.me blog (12K+ readers).",
+  },
+  {
+    id: "exp-leo-club",
+    kind: "experience",
+    year: 2022,
+    month: 8,
+    endYear: 2025,
+    endMonth: 5,
+    company: "LEO Club · Lions International",
+    role: "President",
+    location: "Frisco, TX",
+    pitch:
+      "Led the Lions International youth chapter. Organized blood drives, donation drives for the children's hospital, and cyber-awareness workshops for 100+ seniors at the Hindu temple in Hindi and English.",
+  },
+  {
+    id: "exp-our-lucky-connect",
+    kind: "experience",
+    year: 2022,
+    month: 8,
+    endYear: 2025,
+    endMonth: 5,
+    company: "Our Lucky Connect",
+    role: "Director of Technology",
+    location: "Remote",
+    pitch:
+      "Non-profit tutoring underprivileged kids in rural India. Built and ran the platform, coordinated volunteers, collected and donated 2,000+ books to partner charities.",
+    url: "https://our-lucky-connect.vercel.app",
+  },
 
   // ============ PUBLICATIONS ============
   {
@@ -118,6 +171,37 @@ export const manualEntries: TimelineEntry[] = [
     fair: "Dallas Regional Science & Engineering Fair",
     grade: "11th grade",
     coAuthors: ["Smaran Manchala"],
+  },
+
+  // ============ HACKATHONS ============
+  {
+    id: "hack-jachacks",
+    kind: "award",
+    year: 2026,
+    month: 4,
+    title: "JacHacks 2026 @ University of Michigan",
+    competition: "JacHacks",
+    placement: "Shipped tracelight + chainviz, both solo",
+    url: "https://jachacks.devpost.com/project-gallery",
+  },
+  {
+    id: "hack-hackillinois",
+    kind: "award",
+    year: 2026,
+    month: 3,
+    title: "HackIllinois 2026",
+    competition: "HackIllinois",
+    placement: "Shipped Phantom, solo",
+    url: "https://hackillinois-2026.devpost.com/submissions/search?query=phantom",
+  },
+  {
+    id: "hack-keywords",
+    kind: "award",
+    year: 2026,
+    month: 2,
+    title: "Keywords AI Hackathon · UIUC",
+    competition: "Keywords AI",
+    placement: "Shipped FuckNetflix — won the full-time offer from Keywords (now Respan)",
   },
 
   // ============ AWARDS ============
@@ -273,7 +357,7 @@ export const manualEntries: TimelineEntry[] = [
     id: "pr-pydantic-ai",
     kind: "contribution",
     year: 2026,
-    month: 3,
+    month: 4,
     upstream: "pydantic/pydantic-ai",
     prTitle: "Add Respan to alternative observability backends",
     prNumber: 4809,

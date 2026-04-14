@@ -42,10 +42,12 @@ const IframeEmbed = ({ url, title, onOpenFullscreen }: IframeEmbedProps) => {
         )}
       </div>
 
-      {/* Iframe */}
-      <div className="relative h-[480px] w-full bg-[#020204] md:h-[540px]">
+      {/* Iframe — zoomed out so the whole app fits without interior scrolling.
+          The iframe itself is rendered at 1/scale (~143%) and scaled down via
+          CSS, so the visual result is the site at ~70% zoom. */}
+      <div className="relative h-[480px] w-full overflow-hidden bg-[#020204] md:h-[540px]">
         {!loaded && (
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 z-10 flex items-center justify-center">
             <span className="font-mono text-[11px] text-white/30">
               loading live demo…
             </span>
@@ -57,7 +59,13 @@ const IframeEmbed = ({ url, title, onOpenFullscreen }: IframeEmbedProps) => {
           loading="lazy"
           sandbox="allow-scripts allow-same-origin allow-forms"
           onLoad={() => setLoaded(true)}
-          className="h-full w-full border-0"
+          className="absolute left-0 top-0 border-0"
+          style={{
+            width: "142.857%",  // 100 / 0.7
+            height: "142.857%",
+            transform: "scale(0.7)",
+            transformOrigin: "0 0",
+          }}
         />
       </div>
     </div>

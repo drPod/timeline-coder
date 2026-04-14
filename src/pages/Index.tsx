@@ -3,13 +3,13 @@ import { AnimatePresence } from "framer-motion";
 import BinaryCanvas from "@/components/canvas/BinaryCanvas";
 import HeroOverlay from "@/components/canvas/HeroOverlay";
 import FlagshipSection from "@/components/flagship/FlagshipSection";
-import YearSection from "@/components/timeline/YearSection";
+import MonthSection from "@/components/timeline/MonthSection";
 import LivePreview from "@/components/timeline/LivePreview";
 import CommandPalette from "@/components/CommandPalette";
 import Footer from "@/components/Footer";
 import StatusBar from "@/components/StatusBar";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
-import { getEntriesByYear } from "@/lib/githubData";
+import { getEntriesByMonth } from "@/lib/githubData";
 import type { ProjectEntry } from "@/lib/githubData";
 import { flagshipIds } from "@/data/flagships";
 import type { FlagshipProject } from "@/data/flagships";
@@ -20,7 +20,24 @@ const Index = () => {
   const [previewProject, setPreviewProject] = useState<ProjectEntry | null>(
     null,
   );
-  const entriesByYear = getEntriesByYear();
+
+  // Build month groups, drop flagship IDs, then mark the first month of each
+  // year so MonthSection can render a slightly heavier "MMM YYYY" header.
+  const monthGroups = useMemo(() => {
+    const groups = getEntriesByMonth()
+      .map((g) => ({
+        ...g,
+        entries: g.entries.filter((e) => !flagshipIds.has(e.id)),
+      }))
+      .filter((g) => g.entries.length > 0);
+
+    let lastYear: number | null = null;
+    return groups.map((g) => {
+      const showYear = g.year !== lastYear;
+      lastYear = g.year;
+      return { ...g, showYear };
+    });
+  }, []);
 
   // Keyboard shortcut for Cmd+K / Ctrl+/ — toggle command palette
   useEffect(() => {
@@ -45,9 +62,6 @@ const Index = () => {
       document.body.classList.remove("crt-mode");
     };
   }, [crtMode]);
-
-  // Convert Map to sorted array (descending year)
-  const years = Array.from(entriesByYear.keys()).sort((a, b) => b - a);
 
   /**
    * Synthesises a ProjectEntry for a flagship so LivePreview can open.
@@ -91,16 +105,18 @@ const Index = () => {
       {/* Flagship projects — cinematic full-bleed */}
       <FlagshipSection onOpenLive={handleOpenLive} />
 
-      {/* Timeline section (flagship IDs filtered out so they don't render twice) */}
+      {/* Timeline section — month-grouped chronological flow.
+          Flagship IDs are filtered out above so they don't render twice. */}
       <div className="timeline-wrapper">
         <div className="timeline-container">
-          {years.map((year) => (
-            <YearSection
-              key={year}
-              year={year}
-              entries={entriesByYear.get(year) || []}
+          {monthGroups.map((g) => (
+            <MonthSection
+              key={g.key}
+              year={g.year}
+              month={g.month}
+              entries={g.entries}
+              showYear={g.showYear}
               onOpenPreview={setPreviewProject}
-              excludeIds={flagshipIds}
             />
           ))}
         </div>

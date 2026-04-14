@@ -322,6 +322,36 @@ export function getEntriesByYear(): Map<number, TimelineEntry[]> {
   return map;
 }
 
+/**
+ * Groups all timeline entries by "YYYY-MM" key. Sorted newest first.
+ * Entries missing a `month` (or month === 0) default to January.
+ */
+export function getEntriesByMonth(): Array<{
+  key: string; // "2026-04"
+  year: number;
+  month: number; // 1-12
+  entries: TimelineEntry[];
+}> {
+  const all = getAllEntries(); // already sorted year desc, month desc
+  const groups = new Map<string, TimelineEntry[]>();
+  for (const e of all) {
+    const month = e.month && e.month > 0 ? e.month : 1;
+    const key = `${e.year}-${String(month).padStart(2, "0")}`;
+    const list = groups.get(key);
+    if (list) {
+      list.push(e);
+    } else {
+      groups.set(key, [e]);
+    }
+  }
+  return Array.from(groups.entries())
+    .map(([key, entries]) => {
+      const [y, m] = key.split("-").map(Number);
+      return { key, year: y, month: m, entries };
+    })
+    .sort((a, b) => b.year - a.year || b.month - a.month);
+}
+
 // Preference order when multiple entries in a year are marked featured.
 const FEATURED_KIND_PRIORITY: Record<TimelineEntry["kind"], number> = {
   isef: 0,

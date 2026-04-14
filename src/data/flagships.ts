@@ -4,7 +4,7 @@
  * an embedded live demo (iframe, video, or custom React component).
  *
  * The `id` MUST match the repo name in `projects.ts`/`githubCache.json` so
- * the Index page can filter these out of YearSection (avoid double-render).
+ * the Index page can filter these out of MonthSection (avoid double-render).
  */
 
 export type FlagshipProject = {
@@ -155,7 +155,7 @@ export const flagshipProjects: FlagshipProject[] = [
     ],
     demoKind: "fucknetflix",
     repoUrl: "https://github.com/drPod/FuckNetflix",
-    year: 2025,
+    year: 2026,
   },
   {
     id: "coldshot",
