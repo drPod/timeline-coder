@@ -9,6 +9,7 @@
     "homepage": "",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": [
       "gpt",
       "openai-api"
@@ -18,24 +19,26 @@
     "name": "Cutting-Edge-Website",
     "description": "Lawn Mowing Website",
     "created_at": "2023-07-07T03:25:41Z",
-    "pushed_at": "2023-07-07T03:36:43Z",
+    "pushed_at": "2026-04-14T10:08:56Z",
     "language": "JavaScript",
     "html_url": "https://github.com/drPod/Cutting-Edge-Website",
     "homepage": "https://cutting-edge-website.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
     "name": "Its-The-Little-Things",
     "description": "Non profit organization reaching to children in orphanages.",
     "created_at": "2023-07-18T05:45:41Z",
-    "pushed_at": "2023-07-22T01:56:01Z",
+    "pushed_at": "2026-04-14T10:08:57Z",
     "language": "CSS",
     "html_url": "https://github.com/drPod/Its-The-Little-Things",
     "homepage": "https://its-the-little-things.vercel.app",
     "fork": true,
     "archived": false,
+    "default_branch": "master",
     "topics": []
   },
   {
@@ -48,6 +51,7 @@
     "homepage": "https://cyber-society.tech",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": [
       "cybersecurity",
       "cybersecurity-awareness"
@@ -63,6 +67,7 @@
     "homepage": "",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -75,6 +80,7 @@
     "homepage": "",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -87,6 +93,7 @@
     "homepage": "https://our-lucky-connect.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -99,6 +106,7 @@
     "homepage": "",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -111,6 +119,7 @@
     "homepage": "https://homebowls.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -123,6 +132,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -135,6 +145,7 @@
     "homepage": "https://community-corner-web.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -147,6 +158,7 @@
     "homepage": "https://intellispend.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -159,6 +171,7 @@
     "homepage": "https://gradehubfisd.netlify.app/",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -171,6 +184,7 @@
     "homepage": "",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -183,6 +197,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -195,6 +210,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "master",
     "topics": []
   },
   {
@@ -207,6 +223,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -219,18 +236,20 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
     "name": "Atlantis",
     "description": null,
     "created_at": "2024-12-20T21:20:20Z",
-    "pushed_at": "2025-01-15T13:09:48Z",
+    "pushed_at": "2026-04-14T10:08:51Z",
     "language": "JavaScript",
     "html_url": "https://github.com/drPod/Atlantis",
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "master",
     "topics": []
   },
   {
@@ -243,18 +262,20 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
     "name": "AP-Stat-Project",
     "description": null,
     "created_at": "2025-02-19T15:59:49Z",
-    "pushed_at": "2025-02-19T16:31:42Z",
+    "pushed_at": "2026-04-14T10:08:55Z",
     "language": "Python",
     "html_url": "https://github.com/drPod/AP-Stat-Project",
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -267,6 +288,7 @@
     "homepage": null,
     "fork": true,
     "archived": false,
+    "default_branch": "master",
     "topics": []
   },
   {
@@ -279,6 +301,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -291,6 +314,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -303,6 +327,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -315,6 +340,7 @@
     "homepage": "https://courses-visualization.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -327,6 +353,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -339,6 +366,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -351,6 +379,7 @@
     "homepage": "",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -363,6 +392,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -375,6 +405,7 @@
     "homepage": "",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -387,6 +418,7 @@
     "homepage": "https://uiuc-food-waste-awareness.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -399,6 +431,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -411,6 +444,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -423,6 +457,7 @@
     "homepage": null,
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -435,6 +470,7 @@
     "homepage": "https://phd-application-tracker-beta.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -447,6 +483,7 @@
     "homepage": "https://cafe-website-olive.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -459,6 +496,7 @@
     "homepage": "",
     "fork": false,
     "archived": false,
+    "default_branch": "master",
     "topics": []
   },
   {
@@ -471,6 +509,7 @@
     "homepage": "",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -483,19 +522,29 @@
     "homepage": "",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
-    "name": "timeline-coder",
-    "description": null,
+    "name": "darshpoddar.com",
+    "description": "My personal site at darshpoddar.com — interactive binary canvas hero, chronological timeline of every project I've shipped, live demos.",
     "created_at": "2026-03-08T01:58:10Z",
-    "pushed_at": "2026-04-14T08:22:53Z",
+    "pushed_at": "2026-04-14T10:10:50Z",
     "language": "TypeScript",
-    "html_url": "https://github.com/drPod/timeline-coder",
-    "homepage": "https://timeline-coder.vercel.app",
+    "html_url": "https://github.com/drPod/darshpoddar.com",
+    "homepage": "https://darshpoddar.com",
     "fork": false,
     "archived": false,
-    "topics": []
+    "default_branch": "main",
+    "topics": [
+      "canvas",
+      "personal-website",
+      "portfolio",
+      "react",
+      "tailwindcss",
+      "typescript",
+      "vite"
+    ]
   },
   {
     "name": "respan-mcp",
@@ -507,6 +556,7 @@
     "homepage": "https://keywordsai-mcp.vercel.app",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -519,6 +569,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -531,6 +582,7 @@
     "homepage": null,
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -543,6 +595,7 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -555,6 +608,7 @@
     "homepage": "https://geminicli.com",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -567,6 +621,7 @@
     "homepage": "https://ai-sdk.dev",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -579,6 +634,7 @@
     "homepage": "https://haystack.deepset.ai/integrations",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -591,6 +647,7 @@
     "homepage": "https://mastra.ai",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -603,6 +660,7 @@
     "homepage": "",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -615,6 +673,7 @@
     "homepage": "https://ai.pydantic.dev",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -627,6 +686,7 @@
     "homepage": "https://docs.boundaryml.com",
     "fork": true,
     "archived": false,
+    "default_branch": "canary",
     "topics": []
   },
   {
@@ -639,6 +699,7 @@
     "homepage": "https://developers.llamaindex.ai",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -651,6 +712,7 @@
     "homepage": "https://rubyllm.com/",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -663,6 +725,7 @@
     "homepage": "https://docs.litellm.ai/docs/",
     "fork": true,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -675,6 +738,7 @@
     "homepage": "",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -687,6 +751,7 @@
     "homepage": "https://canopy-chat.vercel.app/",
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
@@ -699,6 +764,7 @@
     "homepage": "https://supply-chain-frontend-nu.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "master",
     "topics": []
   },
   {
@@ -711,6 +777,7 @@
     "homepage": "https://icij-offshore-leaks.vercel.app",
     "fork": false,
     "archived": false,
+    "default_branch": "master",
     "topics": []
   },
   {
@@ -723,18 +790,29 @@
     "homepage": null,
     "fork": false,
     "archived": false,
+    "default_branch": "main",
     "topics": []
   },
   {
     "name": "stormchain",
-    "description": "EPPS-American Airlines Data Challenge: Identifying pilot flight sequences through DFW most vulnerable to weather-driven cascading delays. XGBoost model (AUC-ROC 0.81) + 1,220 avoid recommendations + interactive Streamlit dashboard.",
+    "description": "⛈️ StormChain — identifying pilot flight sequences through DFW most vulnerable to weather-driven cascading delays. XGBoost (AUC 0.81) + 1,220 avoid recommendations + live METAR dashboard. Built for the EPPS-American Airlines Data Challenge.",
     "created_at": "2026-04-14T02:18:56Z",
-    "pushed_at": "2026-04-14T08:26:31Z",
+    "pushed_at": "2026-04-14T09:57:48Z",
     "language": "Python",
     "html_url": "https://github.com/drPod/stormchain",
-    "homepage": null,
+    "homepage": "https://stormchain.streamlit.app",
     "fork": false,
     "archived": false,
-    "topics": []
+    "default_branch": "main",
+    "topics": [
+      "airline-analytics",
+      "american-airlines",
+      "aviation",
+      "data-science",
+      "machine-learning",
+      "streamlit",
+      "weather-data",
+      "xgboost"
+    ]
   }
 ]

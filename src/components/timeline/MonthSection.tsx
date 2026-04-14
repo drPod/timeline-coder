@@ -70,7 +70,8 @@ const MonthSection = ({
   if (entries.length === 0) return null;
 
   const handleProjectClick = (project: ProjectEntry) => {
-    if (!project.liveUrl) return;
+    // Open the preview modal regardless of liveUrl — the modal falls back
+    // to rendering the project's README when there's no live demo.
     onOpenPreview(project);
   };
 

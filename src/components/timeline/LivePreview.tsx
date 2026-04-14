@@ -1,11 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import type { ProjectEntry } from "@/lib/githubData";
+import readmesData from "@/data/readmes.json";
+import ReadmeView from "@/components/preview/ReadmeView";
 
 type LivePreviewProps = {
   project: ProjectEntry;
   onClose: () => void;
 };
+
+type ReadmeEntry = { content: string; branch: string; repo: string };
+const readmes = readmesData as Record<string, ReadmeEntry>;
 
 /** Truncate a URL for display in the browser chrome bar. */
 function truncateUrl(url: string, maxLength = 80): string {
@@ -13,13 +18,18 @@ function truncateUrl(url: string, maxLength = 80): string {
   return url.slice(0, maxLength - 1) + "…";
 }
 
+/** Infer the repo name from a GitHub URL like https://github.com/drPod/Phantom */
+function repoNameFromUrl(url: string | undefined): string | null {
+  if (!url) return null;
+  const m = url.match(/github\.com\/[^/]+\/([^/#?]+)/i);
+  return m ? m[1] : null;
+}
+
 const LivePreview = ({ project, onClose }: LivePreviewProps) => {
-  // Escape key closes the modal
+  // Close on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
+      if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -34,7 +44,26 @@ const LivePreview = ({ project, onClose }: LivePreviewProps) => {
     };
   }, []);
 
-  if (!project.liveUrl) return null;
+  const readmeEntry = useMemo(() => {
+    const byId = readmes[project.id];
+    if (byId) return byId;
+    const repoFromUrl = repoNameFromUrl(project.repoUrl);
+    if (repoFromUrl && readmes[repoFromUrl]) return readmes[repoFromUrl];
+    return null;
+  }, [project.id, project.repoUrl]);
+
+  const hasLive = !!project.liveUrl;
+  const hasReadme = !!readmeEntry;
+
+  const chromeUrl = hasLive
+    ? project.liveUrl!
+    : hasReadme
+      ? `github.com/drPod/${readmeEntry!.repo}/README.md`
+      : `github.com/drPod/${project.id}`;
+
+  const readmeGithubUrl = hasReadme
+    ? `https://github.com/drPod/${readmeEntry!.repo}/blob/${readmeEntry!.branch}/README.md`
+    : null;
 
   return (
     <motion.div
@@ -59,7 +88,7 @@ const LivePreview = ({ project, onClose }: LivePreviewProps) => {
           <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: "#febc2e" }} />
           <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: "#28c840" }} />
           <span className="flex-1 truncate text-center font-mono text-[11px] text-white/30">
-            {truncateUrl(project.liveUrl)}
+            {truncateUrl(chromeUrl)}
           </span>
           <button
             type="button"
@@ -70,19 +99,41 @@ const LivePreview = ({ project, onClose }: LivePreviewProps) => {
           </button>
         </div>
 
-        {/* iframe */}
-        <div className="w-full flex-1 bg-[#020204]">
-          <iframe
-            src={project.liveUrl}
-            loading="eager"
-            sandbox="allow-scripts allow-same-origin allow-forms"
-            className="h-full w-full border-0"
-            title={project.name}
-          />
+        {/* Body — iframe if live, README if not, fallback otherwise */}
+        <div className="w-full flex-1 overflow-y-auto bg-[#020204]">
+          {hasLive ? (
+            <iframe
+              src={project.liveUrl}
+              loading="eager"
+              sandbox="allow-scripts allow-same-origin allow-forms"
+              className="h-full w-full border-0"
+              title={project.name}
+            />
+          ) : hasReadme ? (
+            <ReadmeView
+              repo={readmeEntry!.repo}
+              branch={readmeEntry!.branch}
+              content={readmeEntry!.content}
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center p-10 text-center">
+              <div className="flex max-w-md flex-col gap-3">
+                <h3 className="font-mono text-[18px] font-bold text-white">
+                  {project.name}
+                </h3>
+                <p className="font-sans text-[13px] leading-relaxed text-white/50">
+                  {project.pitch}
+                </p>
+                <p className="pt-2 font-mono text-[10px] text-white/25">
+                  no live demo, no README on github
+                </p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Actions bar */}
-        <div className="flex h-10 items-center gap-3.5 border-t border-white/5 px-4">
+        <div className="flex h-10 flex-wrap items-center gap-3.5 border-t border-white/5 px-4">
           <a
             href={project.repoUrl}
             target="_blank"
@@ -91,14 +142,26 @@ const LivePreview = ({ project, onClose }: LivePreviewProps) => {
           >
             github →
           </a>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[11px] text-[#3ecf8e]/70 transition-colors hover:text-[#3ecf8e]"
-          >
-            open full →
-          </a>
+          {hasLive && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[11px] text-[#3ecf8e]/70 transition-colors hover:text-[#3ecf8e]"
+            >
+              open full →
+            </a>
+          )}
+          {!hasLive && readmeGithubUrl && (
+            <a
+              href={readmeGithubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[11px] text-[#3ecf8e]/70 transition-colors hover:text-[#3ecf8e]"
+            >
+              readme on github →
+            </a>
+          )}
           {project.techStack.length > 0 && (
             <span className="ml-auto font-mono text-[10px] text-white/15">
               {project.techStack.join(" · ")}

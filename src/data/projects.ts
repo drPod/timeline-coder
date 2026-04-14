@@ -198,6 +198,65 @@ const include: ProjectOverride[] = [
       "First time I touched the OpenAI API. Looped through every engine they had, called Babbage and Davinci.",
     category: "learning",
   },
+  {
+    repoName: "phd-application-tracker",
+    pitch:
+      "Built because every PhD application tracker out there sucks. Next.js, Postgres, deployed.",
+    category: "tool",
+    liveUrl: "https://phd-application-tracker-beta.vercel.app",
+  },
+  {
+    repoName: "cafe-website",
+    pitch:
+      "Zuccaro Café landing page. Costa Rican coffee roasters, real local business.",
+    category: "tool",
+    liveUrl: "https://cafe-website-olive.vercel.app",
+  },
+  {
+    repoName: "Homebowls",
+    pitch:
+      "Food business site. Multi-page Bootstrap build, dual-deployed to Vercel and WordPress.",
+    category: "tool",
+    liveUrl: "https://homebowls.vercel.app",
+  },
+  {
+    repoName: "Cutting-Edge-Website",
+    pitch:
+      "Landing page for a lawn-care business. Template customized, deployed.",
+    category: "tool",
+    liveUrl: "https://cutting-edge-website.vercel.app",
+  },
+  {
+    repoName: "Its-The-Little-Things",
+    pitch:
+      "Non-profit reaching kids in orphanages. My earliest shipped project — 2019, kept updated through 2023.",
+    category: "tool",
+    liveUrl: "https://its-the-little-things.vercel.app",
+  },
+  {
+    repoName: "Atlantis",
+    pitch:
+      "2D underwater game in C#. Raylib, Arch ECS, Box2D, SQLite save states, draggable level editor.",
+    category: "tool",
+  },
+  {
+    repoName: "Aura-Health",
+    pitch:
+      "Team-based wellness platform. React + NextUI client, Firebase Functions backend, captain/member roles.",
+    category: "tool",
+  },
+  {
+    repoName: "Unbound-Basketball",
+    pitch:
+      "Landing page for a youth basketball training group run by varsity athletes. Hand-written HTML and CSS.",
+    category: "tool",
+  },
+  {
+    repoName: "AP-Stat-Project",
+    pitch:
+      "AP Stat survey on spicy food and pineapple pizza. 124 respondents, confidence intervals, z-tests in Python.",
+    category: "research",
+  },
 ];
 
 // ── MENTION (small cards) ───────────────────────────────────────────────
@@ -260,15 +319,14 @@ const mention: ProjectOverride[] = [
 const skip: ProjectOverride[] = [
   { repoName: "drPod", skip: true, category: "tool" },
   { repoName: "drPod.github.io", skip: true, category: "tool" },
+  // skipped: HelloWorld-tier intro Java labs (BlueJ IDE files, SecretCodeProject). Class-assignment repo.
   { repoName: "Java-Learning", skip: true, category: "tool" },
   { repoName: "thisisfunny", skip: true, category: "tool" },
+  // skipped: literally two JPGs, one commit — no code.
   { repoName: "steg", skip: true, category: "tool" },
   { repoName: "Flowers-for-Vasu", skip: true, category: "tool" },
   { repoName: "Youtube-Transcript-Maker", skip: true, category: "tool" },
   { repoName: "stat107-project2", skip: true, category: "tool" },
-  { repoName: "AP-Stat-Project", skip: true, category: "tool" },
-  { repoName: "Aura-Health", skip: true, category: "tool" },
-  { repoName: "Unbound-Basketball", skip: true, category: "tool" },
   { repoName: "vasu-hw", skip: true, category: "tool" },
   { repoName: "cinestream-desktop", skip: true, category: "tool" },
   { repoName: "study-buddy-hub", skip: true, category: "tool" },
@@ -276,13 +334,8 @@ const skip: ProjectOverride[] = [
   { repoName: "chatterbox-chronicle", skip: true, category: "tool" },
   { repoName: "research-navigator-ai", skip: true, category: "tool" },
   { repoName: "curryblends-elevated", skip: true, category: "tool" },
-  { repoName: "cafe-website", skip: true, category: "tool" },
-  { repoName: "phd-application-tracker", skip: true, category: "tool" },
-  { repoName: "timeline-coder", skip: true, category: "tool" },
-  { repoName: "Atlantis", skip: true, category: "tool" },
-  { repoName: "Homebowls", skip: true, category: "tool" },
-  { repoName: "Cutting-Edge-Website", skip: true, category: "tool" },
-  { repoName: "Its-The-Little-Things", skip: true, category: "tool" },
+  { repoName: "darshpoddar.com", skip: true, category: "tool" },
+  { repoName: "timeline-coder", skip: true, category: "tool" }, // legacy — kept in case old cache resolves before first fetch after rename
 ];
 
 // ── Combined lookup ─────────────────────────────────────────────────────

@@ -19,7 +19,7 @@ interface CommandPaletteProps {
 
 const GITHUB_URL = "https://github.com/drPod";
 const LINKEDIN_URL = "https://linkedin.com/in/darshpoddar";
-const SOURCE_URL = "https://github.com/drPod/timeline-coder";
+const SOURCE_URL = "https://github.com/drPod/darshpoddar.com";
 
 const CommandPalette = ({ open, onOpenChange, onToggleCrt }: CommandPaletteProps) => {
   const projects = getProjects();
