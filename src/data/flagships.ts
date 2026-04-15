@@ -27,6 +27,7 @@ export type FlagshipProject = {
   repoUrl: string;
   liveUrl?: string;
   paperUrl?: string;
+  devpostUrl?: string;
   year: number;
 };
 
@@ -79,6 +80,7 @@ export const flagshipProjects: FlagshipProject[] = [
     videoPoster: "/thumbnails/videos/tracelight-poster.jpg",
     repoUrl: "https://github.com/drPod/tracelight",
     liveUrl: "https://icij-offshore-leaks.vercel.app",
+    devpostUrl: "https://devpost.com/software/idk-r6opke",
     year: 2026,
   },
   {
@@ -106,6 +108,7 @@ export const flagshipProjects: FlagshipProject[] = [
     videoPoster: "/thumbnails/videos/chainviz-poster.jpg",
     repoUrl: "https://github.com/drPod/chainviz",
     liveUrl: "https://supply-chain-frontend-nu.vercel.app",
+    devpostUrl: "https://devpost.com/software/npm-supply-chain-risk-analyzer",
     year: 2026,
   },
   {
@@ -132,6 +135,7 @@ export const flagshipProjects: FlagshipProject[] = [
     videoSrc: "/thumbnails/videos/Phantom.mp4",
     videoPoster: "/thumbnails/videos/Phantom-poster.jpg",
     repoUrl: "https://github.com/drPod/Phantom",
+    devpostUrl: "https://devpost.com/software/phantom-py83dj",
     year: 2026,
   },
   {

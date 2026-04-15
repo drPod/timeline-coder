@@ -180,6 +180,16 @@ const FlagshipPanel = ({ project, index, onOpenLive }: FlagshipPanelProps) => {
             paper →
           </a>
         )}
+        {project.devpostUrl && (
+          <a
+            href={project.devpostUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[11px] text-[#3ecf8e]/70 transition-colors hover:text-[#3ecf8e]"
+          >
+            devpost →
+          </a>
+        )}
         <span className="ml-auto font-mono text-[10px] text-white/20">
           {project.name} · {project.year}
         </span>
