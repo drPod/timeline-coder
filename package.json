@@ -14,6 +14,7 @@
     "fetch:github": "bun run scripts/fetch-github-data.ts",
     "capture:screenshots": "bun run scripts/capture-screenshots.ts",
     "generate:og": "bun run scripts/generate-og-image.ts",
+    "generate:og:flagships": "bun run scripts/generate-flagship-og.ts",
     "prerender": "bun run scripts/prerender.ts",
     "prebuild": "bun run fetch:github"
   },
@@ -47,6 +48,7 @@
     "@radix-ui/react-toggle-group": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@tanstack/react-query": "^5.83.0",
+    "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",

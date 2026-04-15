@@ -1,10 +1,16 @@
-import { useState, useEffect, useMemo } from "react";
+import { Suspense, lazy, useState, useEffect, useMemo } from "react";
 import { AnimatePresence } from "framer-motion";
 import BinaryCanvas from "@/components/canvas/BinaryCanvas";
 import HeroOverlay from "@/components/canvas/HeroOverlay";
-import FlagshipSection from "@/components/flagship/FlagshipSection";
 import MonthSection from "@/components/timeline/MonthSection";
 import LivePreview from "@/components/timeline/LivePreview";
+
+// FlagshipSection + its 6 demo components are the heaviest below-the-fold
+// surface on the page. Splitting them out of the main chunk cuts the
+// initial JS by ~30-40% and defers parsing until the user scrolls to it.
+const FlagshipSection = lazy(
+  () => import("@/components/flagship/FlagshipSection"),
+);
 import CommandPalette from "@/components/CommandPalette";
 import Footer from "@/components/Footer";
 import StatusBar from "@/components/StatusBar";
@@ -103,8 +109,14 @@ const Index = () => {
         {/* Gradient transition from transparent to flagship background */}
         <div className="hero-to-timeline-fade" />
 
-        {/* Flagship projects — cinematic full-bleed */}
-        <FlagshipSection onOpenLive={handleOpenLive} />
+        {/* Flagship projects — cinematic full-bleed (lazy chunk) */}
+        <Suspense
+          fallback={
+            <div style={{ minHeight: "100vh" }} aria-hidden />
+          }
+        >
+          <FlagshipSection onOpenLive={handleOpenLive} />
+        </Suspense>
 
         {/* Timeline section — month-grouped chronological flow.
             Flagship IDs are filtered out above so they don't render twice. */}

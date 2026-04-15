@@ -1,8 +1,11 @@
-import { useEffect, useMemo } from "react";
+import { Suspense, lazy, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import type { ProjectEntry } from "@/lib/githubData";
 import readmesData from "@/data/readmes.json";
-import ReadmeView from "@/components/preview/ReadmeView";
+
+// ReadmeView pulls in react-markdown + remark-gfm + rehype-highlight
+// (~200KB). Only loaded when a user actually opens a README modal.
+const ReadmeView = lazy(() => import("@/components/preview/ReadmeView"));
 
 type LivePreviewProps = {
   project: ProjectEntry;
@@ -110,11 +113,21 @@ const LivePreview = ({ project, onClose }: LivePreviewProps) => {
               title={project.name}
             />
           ) : hasReadme ? (
-            <ReadmeView
-              repo={readmeEntry!.repo}
-              branch={readmeEntry!.branch}
-              content={readmeEntry!.content}
-            />
+            <Suspense
+              fallback={
+                <div className="flex h-full items-center justify-center">
+                  <span className="font-mono text-[11px] text-white/30">
+                    loading readme…
+                  </span>
+                </div>
+              }
+            >
+              <ReadmeView
+                repo={readmeEntry!.repo}
+                branch={readmeEntry!.branch}
+                content={readmeEntry!.content}
+              />
+            </Suspense>
           ) : (
             <div className="flex h-full items-center justify-center p-10 text-center">
               <div className="flex max-w-md flex-col gap-3">
