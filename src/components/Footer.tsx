@@ -22,6 +22,7 @@ const footerLinks = [
 ];
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="relative z-[2] bg-[rgba(0,0,0,0.88)] border-t border-white/5 pt-8 md:pt-12 pb-20 md:pb-16 px-6 md:px-12">
       <div className="max-w-[1200px] mx-auto flex flex-col gap-4">
@@ -45,7 +46,7 @@ const Footer = () => {
 
         <div className="flex flex-row items-center justify-between text-[10px] font-mono text-white/15">
           <span>built by darsh poddar</span>
-          <span>© 2026</span>
+          <span>© {currentYear}</span>
         </div>
       </div>
     </footer>

@@ -1,7 +1,8 @@
-import { getProjectStats } from "@/lib/githubData";
+import { getProjectStats, getYearRange } from "@/lib/githubData";
 
 const StatusBar = () => {
   const stats = getProjectStats();
+  const range = getYearRange();
 
   return (
     <div className="fixed bottom-0 left-0 right-0 h-[26px] z-50 bg-[rgba(0,0,0,0.8)] backdrop-blur-sm border-t border-[#3ecf8e]/5 hidden md:flex items-center justify-between px-6 font-mono text-[10px] text-white/25 tracking-wide">
@@ -11,7 +12,7 @@ const StatusBar = () => {
       </div>
 
       <div>
-        {stats.repos} repos · 2021–2026
+        {stats.repos} repos · {range.min}–{range.max}
       </div>
 
       <div className="flex items-center">

@@ -402,3 +402,22 @@ export function getProjectStats(): {
     languages: langSet.size,
   };
 }
+
+/**
+ * Min/max year across every timeline entry (projects + manual). Used for
+ * the status-bar year range and the SEO meta "N years" blurb.
+ */
+export function getYearRange(): { min: number; max: number } {
+  const all = getAllEntries();
+  if (all.length === 0) {
+    const now = new Date().getFullYear();
+    return { min: now, max: now };
+  }
+  let min = all[0].year;
+  let max = all[0].year;
+  for (const e of all) {
+    if (e.year < min) min = e.year;
+    if (e.year > max) max = e.year;
+  }
+  return { min, max };
+}
