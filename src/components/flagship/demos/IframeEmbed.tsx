@@ -37,6 +37,7 @@ const IframeEmbed = ({
   const [loaded, setLoaded] = useState(false);
   const isMobile = useIsMobile();
   const [activated, setActivated] = useState(false);
+  const [interactive, setInteractive] = useState(false);
   const gated = gatedOnMobile && isMobile && !activated;
 
   return (
@@ -63,7 +64,10 @@ const IframeEmbed = ({
       {/* Iframe — zoomed out so the whole app fits without interior scrolling.
           The iframe itself is rendered at 1/scale (~143%) and scaled down via
           CSS, so the visual result is the site at ~70% zoom. */}
-      <div className="relative h-[360px] w-full overflow-hidden bg-[#020204] sm:h-[480px] md:h-[540px]">
+      <div
+        className="relative h-[360px] w-full overflow-hidden bg-[#020204] sm:h-[480px] md:h-[540px]"
+        onMouseLeave={() => setInteractive(false)}
+      >
         {gated ? (
           <button
             type="button"
@@ -110,8 +114,21 @@ const IframeEmbed = ({
                 height: "142.857%",
                 transform: "scale(0.7)",
                 transformOrigin: "0 0",
+                pointerEvents: interactive ? "auto" : "none",
               }}
             />
+            {!interactive && (
+              <button
+                type="button"
+                onClick={() => setInteractive(true)}
+                className="group absolute inset-0 z-20 flex items-center justify-center bg-transparent transition-colors hover:bg-black/20"
+                aria-label={`interact with ${title}`}
+              >
+                <span className="rounded-full border border-[#3ecf8e]/40 bg-black/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-white/70 backdrop-blur transition-all group-hover:border-[#3ecf8e]/80 group-hover:text-[#3ecf8e]">
+                  click to interact
+                </span>
+              </button>
+            )}
           </>
         )}
       </div>

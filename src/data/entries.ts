@@ -77,7 +77,7 @@ export const manualEntries: TimelineEntry[] = [
     role: "Information Security Intern",
     location: "Richardson, TX",
     pitch:
-      "Summer 2026 information security internship at a Fortune 50 company. Hybrid, $28/hr + $2K stipend.",
+      "Summer 2026 information security internship at a Fortune 50 company. Hybrid in Richardson, TX.",
   },
   {
     id: "exp-cyber-club",

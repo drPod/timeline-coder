@@ -87,9 +87,19 @@ const LivePreview = ({ project, onClose }: LivePreviewProps) => {
       >
         {/* Browser chrome bar */}
         <div className="flex h-10 items-center gap-2.5 border-b border-white/5 bg-white/[0.02] px-4">
-          <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: "#ff5f57" }} />
-          <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: "#febc2e" }} />
-          <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: "#28c840" }} />
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close preview"
+            className="group relative flex h-3 w-3 items-center justify-center rounded-full transition-transform hover:scale-110"
+            style={{ background: "#ff5f57" }}
+          >
+            <span className="font-mono text-[8px] font-bold text-black/60 opacity-0 transition-opacity group-hover:opacity-100">
+              ×
+            </span>
+          </button>
+          <span aria-hidden className="h-3 w-3 rounded-full" style={{ background: "#febc2e" }} />
+          <span aria-hidden className="h-3 w-3 rounded-full" style={{ background: "#28c840" }} />
           <span className="flex-1 truncate text-center font-mono text-[11px] text-white/30">
             {truncateUrl(chromeUrl)}
           </span>
