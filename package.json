@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && bun run scripts/prerender.ts",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -14,7 +14,9 @@
     "fetch:github": "bun run scripts/fetch-github-data.ts",
     "capture:screenshots": "bun run scripts/capture-screenshots.ts",
     "generate:og": "bun run scripts/generate-og-image.ts",
-    "prebuild": "bun run fetch:github"
+    "prerender": "bun run scripts/prerender.ts",
+    "prebuild": "bun run fetch:github",
+    "postinstall": "playwright install chromium 2>/dev/null || echo '[postinstall] playwright install skipped (non-fatal)'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

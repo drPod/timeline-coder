@@ -31,6 +31,7 @@ const VideoDemo = ({ src, poster, label }: VideoDemoProps) => {
           loop
           playsInline
           preload="metadata"
+          aria-label={label ?? "project demo reel"}
           className="absolute inset-0 h-full w-full object-cover"
         />
       </div>

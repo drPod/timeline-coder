@@ -48,6 +48,8 @@ export default function BinaryCanvas() {
   return (
     <canvas
       ref={canvasRef}
+      role="presentation"
+      aria-hidden="true"
       style={{
         position: "fixed",
         inset: 0,
