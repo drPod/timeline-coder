@@ -15,8 +15,7 @@
     "capture:screenshots": "bun run scripts/capture-screenshots.ts",
     "generate:og": "bun run scripts/generate-og-image.ts",
     "prerender": "bun run scripts/prerender.ts",
-    "prebuild": "bun run fetch:github",
-    "postinstall": "playwright install chromium 2>/dev/null || echo '[postinstall] playwright install skipped (non-fatal)'"
+    "prebuild": "bun run fetch:github"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

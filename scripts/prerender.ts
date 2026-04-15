@@ -20,6 +20,32 @@
 import { chromium } from "playwright";
 import { preview } from "vite";
 import { writeFileSync } from "fs";
+import { execSync } from "child_process";
+
+/** Try to launch Chromium. If it fails (usually because Playwright's
+ * browser binary isn't installed in this environment), run
+ * `playwright install chromium` once and retry. Returns null if both
+ * launch attempts fail so the caller can skip prerender rather than
+ * tank the whole build. */
+async function launchChromiumWithInstall() {
+  try {
+    return await chromium.launch();
+  } catch (err) {
+    console.log(
+      "[prerender] Chromium not launchable, attempting playwright install...",
+    );
+    try {
+      execSync("bunx playwright install chromium", { stdio: "inherit" });
+      return await chromium.launch();
+    } catch (retryErr) {
+      console.warn(
+        "[prerender] Install/launch still failed, skipping prerender:",
+        retryErr instanceof Error ? retryErr.message : retryErr,
+      );
+      return null;
+    }
+  }
+}
 
 async function main(): Promise<void> {
   console.log("[prerender] Starting vite preview on :4173...");
@@ -29,15 +55,8 @@ async function main(): Promise<void> {
 
   const url = "http://127.0.0.1:4173/";
 
-  let browser;
-  try {
-    browser = await chromium.launch();
-  } catch (err) {
-    // If Chromium isn't installed in this environment (e.g. a CI image
-    // without `playwright install`), skip prerender rather than failing
-    // the whole build. The un-prerendered SPA still ships — we just
-    // lose the static-HTML SEO boost.
-    console.warn("[prerender] Could not launch Chromium, skipping:", err instanceof Error ? err.message : err);
+  const browser = await launchChromiumWithInstall();
+  if (!browser) {
     server.httpServer.close();
     return;
   }
