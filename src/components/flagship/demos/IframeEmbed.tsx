@@ -1,9 +1,18 @@
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type IframeEmbedProps = {
   url: string;
   title: string;
   onOpenFullscreen?: () => void;
+  /**
+   * When true, on mobile viewports the iframe is not mounted until the
+   * user taps "load demo" — prevents the iframe's full browser subprocess
+   * from eating memory while the user scrolls past the flagship panel.
+   */
+  gatedOnMobile?: boolean;
+  /** Poster image shown in place of the iframe while gated. */
+  posterSrc?: string;
 };
 
 /** Truncate a URL for display in the faux browser chrome. */
@@ -18,8 +27,17 @@ function truncateUrl(url: string, maxLength = 64): string {
  * and an "open full" link that fires `onOpenFullscreen` so the parent
  * can mount the existing LivePreview modal.
  */
-const IframeEmbed = ({ url, title, onOpenFullscreen }: IframeEmbedProps) => {
+const IframeEmbed = ({
+  url,
+  title,
+  onOpenFullscreen,
+  gatedOnMobile = false,
+  posterSrc,
+}: IframeEmbedProps) => {
   const [loaded, setLoaded] = useState(false);
+  const isMobile = useIsMobile();
+  const [activated, setActivated] = useState(false);
+  const gated = gatedOnMobile && isMobile && !activated;
 
   return (
     <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-[#3ecf8e]/20 bg-[rgba(6,6,8,0.9)] shadow-[0_0_40px_-10px_rgba(62,207,142,0.15)]">
@@ -46,27 +64,56 @@ const IframeEmbed = ({ url, title, onOpenFullscreen }: IframeEmbedProps) => {
           The iframe itself is rendered at 1/scale (~143%) and scaled down via
           CSS, so the visual result is the site at ~70% zoom. */}
       <div className="relative h-[360px] w-full overflow-hidden bg-[#020204] sm:h-[480px] md:h-[540px]">
-        {!loaded && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <span className="font-mono text-[11px] text-white/30">
-              loading live demo…
+        {gated ? (
+          <button
+            type="button"
+            onClick={() => setActivated(true)}
+            className="group absolute inset-0 flex flex-col items-center justify-center gap-3"
+          >
+            {posterSrc && (
+              <img
+                src={posterSrc}
+                alt=""
+                aria-hidden
+                className="absolute inset-0 h-full w-full object-cover opacity-40"
+              />
+            )}
+            <span className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
+            <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-[#3ecf8e]/60 bg-black/60 font-mono text-[14px] text-[#3ecf8e] transition-colors group-active:bg-[#3ecf8e]/20">
+              ▶
             </span>
-          </div>
+            <span className="relative z-10 font-mono text-[11px] uppercase tracking-[0.2em] text-white/80">
+              tap to load demo
+            </span>
+            <span className="relative z-10 max-w-[260px] px-4 text-center font-mono text-[10px] leading-relaxed text-white/40">
+              heavy on mobile memory — only loads when you ask
+            </span>
+          </button>
+        ) : (
+          <>
+            {!loaded && (
+              <div className="absolute inset-0 z-10 flex items-center justify-center">
+                <span className="font-mono text-[11px] text-white/30">
+                  loading live demo…
+                </span>
+              </div>
+            )}
+            <iframe
+              src={url}
+              title={title}
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-forms"
+              onLoad={() => setLoaded(true)}
+              className="absolute left-0 top-0 border-0"
+              style={{
+                width: "142.857%",  // 100 / 0.7
+                height: "142.857%",
+                transform: "scale(0.7)",
+                transformOrigin: "0 0",
+              }}
+            />
+          </>
         )}
-        <iframe
-          src={url}
-          title={title}
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin allow-forms"
-          onLoad={() => setLoaded(true)}
-          className="absolute left-0 top-0 border-0"
-          style={{
-            width: "142.857%",  // 100 / 0.7
-            height: "142.857%",
-            transform: "scale(0.7)",
-            transformOrigin: "0 0",
-          }}
-        />
       </div>
     </div>
   );
