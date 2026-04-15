@@ -218,7 +218,65 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!--
+        Static SEO snapshot — rendered when the raw HTML is fetched (by
+        crawlers, social scrapers, or users on the critical-path before
+        JS executes). React's createRoot replaces this entire subtree on
+        mount, so end-users only see it for the sub-100ms window before
+        the interactive app takes over.
+      -->
+      <noscript>
+        <div style="max-width:720px;margin:48px auto;padding:24px;font-family:ui-monospace,monospace;color:#e5e5e5;background:#000">
+          <p><strong>Enable JavaScript to see the interactive version.</strong> What follows is a static summary.</p>
+        </div>
+      </noscript>
+      <main style="max-width:960px;margin:0 auto;padding:48px 24px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#e5e5e5;background:#000">
+        <h1 style="font-size:42px;margin:0 0 8px;color:#fff;letter-spacing:-0.02em">Darsh Poddar</h1>
+        <p style="color:#9ca3af;margin:0 0 24px">Student at University of Illinois Urbana-Champaign — CS + Information Sciences.</p>
+        <p style="line-height:1.65;margin:0 0 20px">
+          Builder and published security researcher. Work spans autonomous AI agents, OSINT platforms,
+          supply-chain analysis, ML for code, and systems tooling. Papers at
+          <a href="https://arxiv.org/abs/2410.00249" style="color:#3ecf8e">SecureComm 2024</a>
+          and
+          <a href="https://ieeexplore.ieee.org/document/10918233" style="color:#3ecf8e">ACSAC 2024</a>.
+        </p>
+
+        <h2 style="font-size:22px;margin:32px 0 12px;color:#fff">Flagship projects</h2>
+        <ul style="padding:0;margin:0;list-style:none;line-height:1.7">
+          <li><strong style="color:#fff">ghostroom</strong> — live multiplayer AI escape room, 20 Linux desktops haunted by a local Qwen ghost. <a href="https://github.com/drPod/ghostroom" style="color:#3ecf8e">github</a></li>
+          <li><strong style="color:#fff">tracelight</strong> — the Panama Papers, made walkable. Jac agent traverses the 2M-node ICIJ graph and narrates the shell-company chain. <a href="https://icij-offshore-leaks.vercel.app" style="color:#3ecf8e">live</a> · <a href="https://github.com/drPod/tracelight" style="color:#3ecf8e">github</a></li>
+          <li><strong style="color:#fff">chainviz</strong> — five AI agents investigating one compromised npm package. 1,087 packages × 217K OSV vulns, 4 real attacks replayable. <a href="https://supply-chain-frontend-nu.vercel.app" style="color:#3ecf8e">live</a> · <a href="https://github.com/drPod/chainviz" style="color:#3ecf8e">github</a></li>
+          <li><strong style="color:#fff">Phantom</strong> — autonomous OSINT platform. Claude planner-analyst loop dispatches 600+ parallel resolvers across breach DBs, social, crypto, domain intel. <a href="https://github.com/drPod/Phantom" style="color:#3ecf8e">github</a></li>
+          <li><strong style="color:#fff">FuckNetflix</strong> — Electron desktop torrent streamer. WebTorrent + bundled mpv + on-device SmolLM2 ranker. No subscriptions, no API keys. <a href="https://github.com/drPod/FuckNetflix" style="color:#3ecf8e">github</a></li>
+          <li><strong style="color:#fff">coldshot</strong> — terminal agentic CRM. AI discovers prospects, researches pain, writes the cold email. <a href="https://github.com/drPod/coldshot" style="color:#3ecf8e">github</a></li>
+          <li><strong style="color:#fff">stormchain</strong> — weather-delay classifier for commercial flights. 842K flights + 3.5M METAR obs + cascade-propagation simulator. <a href="https://github.com/drPod/stormchain" style="color:#3ecf8e">github</a></li>
+        </ul>
+
+        <h2 style="font-size:22px;margin:32px 0 12px;color:#fff">Publications</h2>
+        <ul style="padding:0;margin:0;list-style:none;line-height:1.7">
+          <li><a href="https://arxiv.org/abs/2410.00249" style="color:#3ecf8e">Enhancing Pre-Trained Language Models for Vulnerability Detection via Semantic-Preserving Data Augmentation</a> — SecureComm 2024.</li>
+          <li><a href="https://ieeexplore.ieee.org/document/10918233" style="color:#3ecf8e">When AI Meets Code Analysis: A Study of Adversarial Attacks on Deep Learning-based Code Models via Program Transformation</a> — ACSAC 2024 Workshops (ARTMAN).</li>
+        </ul>
+
+        <h2 style="font-size:22px;margin:32px 0 12px;color:#fff">Experience (selected)</h2>
+        <ul style="padding:0;margin:0;list-style:none;line-height:1.7">
+          <li>Product Engineer, Respan (YC W24) — 2026</li>
+          <li>Information Security Intern, State Farm (F50) — Summer 2026</li>
+          <li>Research Assistant, UT Dallas Information Security Lab — 2024</li>
+          <li>Software Engineering Intern, UrbanPiper — 2025, 2024</li>
+          <li>Course Assistant, UIUC CS — 2026</li>
+        </ul>
+
+        <h2 style="font-size:22px;margin:32px 0 12px;color:#fff">Links</h2>
+        <ul style="padding:0;margin:0;list-style:none;line-height:1.7">
+          <li><a href="https://github.com/drPod" style="color:#3ecf8e">github.com/drPod</a></li>
+          <li><a href="https://linkedin.com/in/darshpoddar" style="color:#3ecf8e">linkedin.com/in/darshpoddar</a></li>
+          <li><a href="mailto:darshp3@illinois.edu" style="color:#3ecf8e">darshp3@illinois.edu</a></li>
+          <li><a href="/resume.pdf" style="color:#3ecf8e">resume (PDF)</a></li>
+        </ul>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
