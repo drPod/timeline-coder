@@ -202,6 +202,7 @@ export const flagshipProjects: FlagshipProject[] = [
     demoKind: "stormchain",
     repoUrl: "https://github.com/drPod/stormchain",
     liveUrl: "https://stormchain.streamlit.app/",
+    paperUrl: "https://github.com/drPod/stormchain/blob/main/report/report.pdf",
     year: 2026,
   },
 ];
