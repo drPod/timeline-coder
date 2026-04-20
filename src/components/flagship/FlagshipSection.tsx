@@ -216,7 +216,6 @@ const DemoPicker = ({
           onOpenFullscreen={
             onOpenLive ? () => onOpenLive(project) : undefined
           }
-          gatedOnMobile={project.id === "chainviz"}
           posterSrc={project.videoPoster}
         />
       );

@@ -1,57 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hash-fragment URLs (e.g. /#ghostroom) were removed 2026-04-20. Google
+  ignores fragments — every /#x URL collapsed to /, which Search Console
+  reported as 8x "Discovered - currently not indexed". Each flagship
+  project lives in the static SEO snapshot inside <noscript> on /, plus
+  the per-project JSON-LD blocks in index.html.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.darshpoddar.com/</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.darshpoddar.com/resume.pdf</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.darshpoddar.com/#ghostroom</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.darshpoddar.com/#tracelight</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.darshpoddar.com/#chainviz</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.darshpoddar.com/#phantom</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.darshpoddar.com/#fucknetflix</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.darshpoddar.com/#coldshot</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.darshpoddar.com/#stormchain</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>

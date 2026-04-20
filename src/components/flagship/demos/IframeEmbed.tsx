@@ -1,16 +1,9 @@
 import { useState } from "react";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 type IframeEmbedProps = {
   url: string;
   title: string;
   onOpenFullscreen?: () => void;
-  /**
-   * When true, on mobile viewports the iframe is not mounted until the
-   * user taps "load demo" — prevents the iframe's full browser subprocess
-   * from eating memory while the user scrolls past the flagship panel.
-   */
-  gatedOnMobile?: boolean;
   /** Poster image shown in place of the iframe while gated. */
   posterSrc?: string;
 };
@@ -22,23 +15,26 @@ function truncateUrl(url: string, maxLength = 64): string {
 }
 
 /**
- * Faux-browser iframe embed used for projects that have a live URL
- * (tracelight, chainviz). Red/yellow/green window dots, centered URL,
- * and an "open full" link that fires `onOpenFullscreen` so the parent
- * can mount the existing LivePreview modal.
+ * Faux-browser iframe embed used for projects that have a live URL.
+ * Red/yellow/green window dots, centered URL, and an "open full" link
+ * that fires `onOpenFullscreen` so the parent can mount the existing
+ * LivePreview modal.
+ *
+ * Iframes are gated by default — they don't mount until the user clicks
+ * "load demo". This used to be mobile-only; on the index page even
+ * desktop browsers were paying for several full live sites loaded in
+ * background iframes, which made first paint sluggish.
  */
 const IframeEmbed = ({
   url,
   title,
   onOpenFullscreen,
-  gatedOnMobile = false,
   posterSrc,
 }: IframeEmbedProps) => {
   const [loaded, setLoaded] = useState(false);
-  const isMobile = useIsMobile();
   const [activated, setActivated] = useState(false);
   const [interactive, setInteractive] = useState(false);
-  const gated = gatedOnMobile && isMobile && !activated;
+  const gated = !activated;
 
   return (
     <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-[#3ecf8e]/20 bg-[rgba(6,6,8,0.9)] shadow-[0_0_40px_-10px_rgba(62,207,142,0.15)]">
@@ -87,10 +83,10 @@ const IframeEmbed = ({
               ▶
             </span>
             <span className="relative z-10 font-mono text-[11px] uppercase tracking-[0.2em] text-white/80">
-              tap to load demo
+              click to load demo
             </span>
-            <span className="relative z-10 max-w-[260px] px-4 text-center font-mono text-[10px] leading-relaxed text-white/40">
-              heavy on mobile memory — only loads when you ask
+            <span className="relative z-10 max-w-[280px] px-4 text-center font-mono text-[10px] leading-relaxed text-white/40">
+              live site — won't load until you ask
             </span>
           </button>
         ) : (

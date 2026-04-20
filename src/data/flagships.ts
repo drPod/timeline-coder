@@ -56,6 +56,33 @@ export const flagshipProjects: FlagshipProject[] = [
     year: 2026,
   },
   {
+    id: "brancher",
+    name: "brancher",
+    tagline: "A learning OS for the Wikipedia rabbit hole.",
+    story:
+      "CS 124 honors group project — five-person team for the honors track of UIUC's intro CS course. I led product and shipped the deploy: split-architecture build with Express on Railway, Vite/React on Vercel, Supabase auth + saved trees, and a hardened cross-origin session flow. Pick any topic and Gemini drafts a prerequisite skill tree; pick any Wikipedia article and a force-directed graph maps its conceptual neighborhood with Gemini-curated enrichment.",
+    architecture: [
+      "React 18 + Vite frontend on Vercel; Express + Supabase backend on Railway",
+      "Cross-origin session auth — secure cookies + CORS allowlist + trust-proxy",
+      "Gemini 2.5 Flash generates the skill tree with asymmetric per-level shape",
+      "Wikipedia knowledge graph: deterministic seeded shuffle of links breaks alphabetical bias",
+      "d3-force layout + per-node positional jitter so trees feel organic, not grid-perfect",
+      "Save / share / send-to-user flows backed by Supabase row-level CRUD",
+    ],
+    stats: [
+      { label: "team size", value: "5" },
+      { label: "course", value: "CS 124 honors" },
+      { label: "model", value: "Gemini 2.5 Flash" },
+      { label: "split deploy", value: "Vercel + Railway" },
+    ],
+    demoKind: "iframe",
+    iframeUrl: "https://brancher-beryl.vercel.app",
+    videoPoster: "/thumbnails/videos/brancher-poster.jpg",
+    repoUrl: "https://github.com/aryan47230/Group2ProjectGithub",
+    liveUrl: "https://brancher-beryl.vercel.app",
+    year: 2026,
+  },
+  {
     id: "tracelight",
     name: "tracelight",
     tagline: "The Panama Papers, made walkable.",
